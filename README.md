@@ -67,3 +67,33 @@ O GitHub Pages não fornece estatísticas detalhadas de acesso nativamente. Caso
 - Corrigido o layout de impressão/PDF para evitar corte de respostas longas.
 - As respostas agora fazem quebra automática de linha e respeitam a largura da página A4.
 - Mantido fundo majoritariamente branco para facilitar impressão.
+
+
+## Observação sobre logos no GitHub Pages
+
+Nesta versão, as logos exibidas na página foram incorporadas diretamente ao `index.html` para evitar erro de caminho, letras maiúsculas/minúsculas ou ausência da pasta `assets` no GitHub Pages. Ainda assim, mantenha as pastas `assets/` e `icons/` no repositório para organização e para o PWA.
+
+Após substituir arquivos no GitHub, limpe o cache do navegador ou abra em janela anônima caso apareça uma versão antiga.
+
+## Estrutura sem subpastas
+
+Esta versão foi preparada para evitar erro de caminho no GitHub Pages. Todos os arquivos necessários ficam na raiz do repositório/pasta publicada:
+
+```
+index.html
+manifest.json
+service-worker.js
+README.md
+icon-192.png
+icon-512.png
+apple-touch-icon.png
+```
+
+As logos institucionais da página estão incorporadas diretamente no `index.html`, portanto não dependem da pasta `assets`.
+
+## Como publicar no GitHub Pages
+
+1. Apague/substitua os arquivos antigos do repositório ou pasta `antirrabica`.
+2. Suba todos os arquivos desta versão diretamente na raiz da pasta/repositório.
+3. Aguarde alguns minutos e atualize a página com `Ctrl + F5`.
+4. Se já tiver aberto a versão anterior, limpe o cache do app: Chrome > F12 > Application > Service Workers > Unregister; depois Clear storage > Clear site data.
