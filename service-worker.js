@@ -1,4 +1,4 @@
-const CACHE_NAME = "raiva-slz-v5-institucional";
+const CACHE_NAME = 'raiva-slz-v-covep-restaurado-20260503';
 const urlsToCache = [
   "./",
   "./index.html",
