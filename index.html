@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Antirrábica SLZ">
+<meta name="apple-mobile-web-app-title" content="Raiva SLZ">
 <meta name="theme-color" content="#00529B">
 <meta name="description" content="Aplicativo de orientação para profilaxia antirrábica humana em São Luís/MA, com geração de comprovante em PDF.">
 <link rel="manifest" href="manifest.json">
@@ -131,16 +131,6 @@ section.ativa{display:block}
 @media(max-width:560px){.sobre-grid{grid-template-columns:1fr}.sobre-hero h2{font-size:17px}.sobre-mini{min-height:auto}}
 
 @media(max-width:480px){header h1{font-size:13px}main{padding:1rem .75rem 4rem}.card{padding:1rem}.tb{font-size:12px}.tb th,.tb td{padding:6px 8px}.bvd,.bol{font-size:12.5px;padding:9px 14px}}
-.legenda-esquema {
-  background: #f4f8fb;
-  border-left: 4px solid #00529B;
-  padding: 12px;
-  margin-bottom: 15px;
-  font-size: 13px;
-}
-.legenda-esquema ul{margin:.45rem 0 .35rem 1rem}
-.legenda-esquema li{margin-bottom:3px}
-
 </style>
 </head>
 <body>
@@ -189,19 +179,7 @@ section.ativa{display:block}
 
 <!-- ESQUEMAS -->
 <section id="esquemas">
-  <div class="legenda-esquema">
-    <strong>Legenda dos dias do esquema vacinal:</strong><br>
-    <ul>
-      <li><strong>D0:</strong> dia da primeira dose (dia do atendimento inicial)</li>
-      <li><strong>D3:</strong> 3 dias após a primeira dose</li>
-      <li><strong>D7:</strong> 7 dias após a primeira dose</li>
-      <li><strong>D14:</strong> 14 dias após a primeira dose</li>
-    </ul>
-    <p style="margin-top:6px;">
-      * Os dias são contados a partir da data da primeira dose (D0). D0 corresponde ao dia da primeira dose, independentemente do dia da exposição.
-    </p>
-  </div>
-  
+  <div class="al"><strong>Atenção:</strong> Consulte o Guia de Vigilância em Saúde, 6ª edição revisada, 2024 para casos complexos.</div>
   <div class="card">
     <div class="ct">📅 Pós-exposição — intramuscular (IM)</div>
     <table class="tb">
@@ -252,7 +230,6 @@ section.ativa{display:block}
     </table>
     <p style="font-size:12px;color:var(--c);margin-top:8px">Caso o paciente tenha feito apenas 1 dose, reiniciar o esquema. Não reiniciar se ≥ 2 doses já foram aplicadas.</p>
   </div>
-  <div class="al"><strong>Atenção:</strong> Consulte o Guia de Vigilância em Saúde mais atualizado no site do Ministério da Saúde para casos complexos.</div>
 </section>
 
 <!-- ONDE VACINAR -->
@@ -286,10 +263,10 @@ section.ativa{display:block}
   <div class="card" style="border-left:3px solid var(--vm2)">
     <div class="ct">🏥 Hospitais com soroterapia antirrábica e antivenenos — São Luís</div>
     <p style="font-size:13px;color:var(--c);margin-bottom:1rem">Soro antirrábico (SAR/IGHAR) e antivenenos disponíveis nos hospitais de referência:</p>
-    <div class="hi"><div class="hn">Socorrão 1 — Hospital Municipal Djalma Marques</div><div class="ht"><span class="badge br2">Antirrábico</span><span class="badge ba">Antiveneno</span></div></div>
-    <div class="hi"><div class="hn">Hospital da Cidade Jackson Lago</div><div class="ht"><span class="badge br2">Antirrábico</span><span class="badge ba">Antiveneno</span></div></div>
-    <div class="hi"><div class="hn">Hospital da Zona Rural</div><div class="ht"><span class="badge br2">Antirrábico</span><span class="badge ba">Antiveneno</span></div></div>
-    <div class="hi"><div class="hn">Hospital da Criança Dr. Odorico Amaral de Matos</div><div class="ht"><span class="badge br2">Antirrábico</span><span class="badge ba">Antiveneno</span></div></div>
+    <div class="hi"><div class="hn">Socorrão 1 — Hospital Municipal Djalma Marques</div><div class="ht"><span class="badge br2">Antirrábico</span><span class="badge ba">Antivenenos</span><span class="badge baz">Todos os tipos</span></div></div>
+    <div class="hi"><div class="hn">Hospital da Cidade Jackson Lago</div><div class="ht"><span class="badge br2">Antirrábico</span><span class="badge ba">Antivenenos</span><span class="badge baz">Todos os tipos</span></div></div>
+    <div class="hi"><div class="hn">Hospital da Zona Rural</div><div class="ht"><span class="badge br2">Antirrábico</span><span class="badge ba">Antivenenos</span><span class="badge baz">Todos os tipos</span></div></div>
+    <div class="hi"><div class="hn">Hospital da Criança Dr. Odorico Amaral de Matos</div><div class="ht"><span class="badge br2">Antirrábico</span><span class="badge ba">Antivenenos</span><span class="badge baz">Todos os tipos</span></div></div>
     <div class="hi"><div class="hn">Hospital Itaqui-Bacanga</div><div class="ht"><span class="badge br2">Apenas antirrábico</span></div></div>
     <div class="hi"><div class="hn">Hospital do Coroadinho</div><div class="ht"><span class="badge br2">Apenas antirrábico</span></div></div>
   </div>
@@ -398,9 +375,9 @@ section.ativa{display:block}
   <div class="card">
     <div class="ct">🔍 Vigilância e notificação</div>
     <ul class="il">
-      <li><span class="ico">📋</span><span><strong>Notificação no SINAN:</strong> os <strong>acidentes por animais potencialmente transmissores da raiva</strong> (Atendimento Antirrábico) devem ser notificados no SINAN, independentemente de haver indicação de vacina ou soro. Essa notificação é de caráter <strong>semanal</strong>.</span></li>
-      <li><span class="ico">🚨</span><span>Já os <strong>casos suspeitos de raiva humana</strong> são de notificação <strong>imediata (até 24 horas)</strong>, devido à gravidade e necessidade de resposta rápida da vigilância.</span></li>
-      <li><span class="ico">🐕</span><span>Cão ou gato que morra durante a observação de 10 dias: encaminhar à <strong>UVZ São Luís</strong> para diagnóstico — (98) 99164-9301 · uvz.sves@semus.saoluis.ma.gov.br</span></li>
+      <li><span class="ico">📋</span><span>Todo caso suspeito de raiva humana é de <strong>notificação compulsória imediata</strong> nas esferas municipal, estadual e federal (SINAN)</span></li>
+      <li><span class="ico">📋</span><span>Todo atendimento antirrábico deve ser registrado na <strong>Ficha de Atendimento Antirrábico do SINAN</strong></span></li>
+      <li><span class="ico">🐕</span><span>Cão ou gato que morra durante a observação de 10 dias: encaminhar à <strong>UVZ São Luís</strong> para diagnóstico — (98) 99164-9301</span></li>
       <li><span class="ico">🦇</span><span>Morcego encontrado em local incomum (voando de dia, caído no chão): <strong>não matar</strong>. Isolar com caixa ou balde e acionar a UVZ</span></li>
     </ul>
   </div>
@@ -412,9 +389,9 @@ section.ativa{display:block}
     <div class="ct">🧪 Animais sem indicação de profilaxia antirrábica</div>
     <p style="font-size:13.5px;line-height:1.55;margin-bottom:.75rem">Os seguintes animais <strong>não transmitem raiva</strong>. Em agressões por eles, avaliar profilaxia antitetânica, mas não antirrábica:</p>
     <ul class="il">
-      <li><span class="ico">🐀</span><span>Ratazana de esgoto ou rato de telhado (Rattus rattus), camundongo (Mus musculus)</span></li>
-      <li><span class="ico">🐹</span><span>Hamster (Mesocricetus auratus), cobaia ou porquinho-da-índia (Cavia porcellus)</span></li>
-      <li><span class="ico">🐇</span><span>Coelho doméstico (Oryctolagus cuniculus)</span></li>
+      <li><span class="ico">🐀</span><span>Ratazana de esgoto ou rato de telhado (<em>Rattus rattus</em>), camundongo (<em>Mus musculus</em>)</span></li>
+      <li><span class="ico">🐹</span><span>Hamster (<em>Mesocricetus auratus</em>), cobaia ou porquinho-da-índia (<em>Cavia porcellus</em>)</span></li>
+      <li><span class="ico">🐇</span><span>Coelho doméstico (<em>Oryctolagus cuniculus</em>)</span></li>
     </ul>
   </div>
   <div class="card">
@@ -518,11 +495,11 @@ section.ativa{display:block}
 <script>
 const passos={
   inicio:{id:'inicio',num:1,total:3,pergunta:'Houve contato com animal potencialmente transmissor da raiva?',opcoes:[{t:'Sim, houve contato com animal',p:'tipo-animal'},{t:'Não — quero saber sobre vacinação preventiva (PrEP)',p:'prep-info'},{t:'Não sei se o animal é transmissor da raiva',p:'qual-animal'}]},
-  'qual-animal':{id:'qual-animal',num:2,total:4,pergunta:'Qual era o animal envolvido?',opcoes:[{t:'Cão ou gato doméstico',p:'cond-animal'},{t:'Morcego',p:'vacinado-prev'},{t:'Animal silvestre (raposa, macaco, guaxinim...)',p:'vacinado-prev'},{t:'Boi, cavalo, porco ou outro herbívoro',p:'gravidade'},{t:'Rato, hamster, cobaia ou coelho doméstico',p:'animal-baixo-risco'}]},
+  'qual-animal':{id:'qual-animal',num:2,total:3,pergunta:'Qual era o animal envolvido?',opcoes:[{t:'Cão ou gato doméstico',p:'tipo-animal'},{t:'Morcego',p:'tipo-animal'},{t:'Animal silvestre (raposa, macaco, guaxinim...)',p:'tipo-animal'},{t:'Boi, cavalo, porco ou outro herbívoro',p:'tipo-animal'},{t:'Rato, hamster, cobaia ou coelho doméstico',p:'animal-baixo-risco'}]},
   'animal-baixo-risco':{id:'animal-baixo-risco',num:3,total:3,resultado:{tipo:'rv',titulo:'✅ Sem indicação de profilaxia antirrábica',conclusao:'Não foi indicada profilaxia antirrábica (vacina ou soro).',justificativa:'O animal envolvido (rato, hamster, cobaia ou coelho doméstico) não é considerado transmissor do vírus da raiva, conforme o Guia de Vigilância em Saúde, 6ª edição revisada, 2024 e a NT 007/2024/SVES/SEMUS São Luís. Recomendado cuidado local da ferida (lavagem com água e sabão) e avaliação médica se houver sinais de infecção. Avaliar necessidade de profilaxia antitetânica.',texto:'<p>Ratos, hamsters, cobaias e coelhos domésticos <strong>não transmitem raiva</strong>. Não há indicação de vacina ou soro antirrábico.</p><p style="margin-top:8px">Lavar com água e sabão. Avaliar profilaxia antitetânica. Se houver sinais de infecção, procure atendimento médico.</p>'}},
   'tipo-animal':{id:'tipo-animal',num:2,total:4,pergunta:'Qual era o animal envolvido?',opcoes:[{t:'Cão ou gato',p:'cond-animal'},{t:'Morcego',p:'vacinado-prev'},{t:'Animal silvestre (raposa, macaco, canídeo selvagem...)',p:'vacinado-prev'},{t:'Boi, cavalo, porco ou outro herbívoro doméstico',p:'gravidade'},{t:'Rato, hamster, cobaia ou coelho doméstico',p:'animal-baixo-risco'}]},
   'cond-animal':{id:'cond-animal',num:3,total:4,pergunta:'Qual era a condição do cão ou gato no momento do acidente?',opcoes:[{t:'Animal domiciliar saudável e observável (≥ 10 dias)',p:'animal-saudavel'},{t:'Animal comunitário saudável e observável (≥ 10 dias)',p:'animal-saudavel'},{t:'Clinicamente suspeito de raiva',p:'gravidade-cao'},{t:'Raivoso, morto ou desaparecido',p:'gravidade'},{t:'Não sei / não foi possível observar',p:'gravidade'}]},
-  'animal-saudavel':{id:'animal-saudavel',num:4,total:4,resultado:{tipo:'rv',titulo:'✅ Observar o animal por 10 dias — sem vacina ou soro agora',conclusao:'Conduta: observação do animal por 10 dias. Vacina e soro não foram indicados neste momento.',justificativa:'O animal agressor (cão ou gato) é domiciliar ou comunitário, clinicamente saudável e passível de observação. Conforme NT 8/2022, NT 35/2026 e NT 007/2024/SVES/SEMUS, não há indicação de profilaxia neste cenário. A pessoa foi orientada a retornar imediatamente se o animal morrer, desaparecer ou apresentar sinais de raiva.',texto:'<p>Cão/gato saudável e observável: <strong>não iniciar vacina ou soro</strong>.</p><ul><li>Lavar o ferimento com água e sabão</li><li>Observar o animal por 10 dias</li><li>Se morrer, desaparecer ou ficar raivoso: procurar a UBS imediatamente</li><li>Animal que morrer durante observação: acionar UVZ São Luís (98) 99164-9301 · uvz.sves@semus.saoluis.ma.gov.br</li></ul>'}},
+  'animal-saudavel':{id:'animal-saudavel',num:4,total:4,resultado:{tipo:'rv',titulo:'✅ Observar o animal por 10 dias — sem vacina ou soro agora',conclusao:'Conduta: observação do animal por 10 dias. Vacina e soro não foram indicados neste momento.',justificativa:'O animal agressor (cão ou gato) é domiciliar ou comunitário, clinicamente saudável e passível de observação. Conforme NT 8/2022, NT 35/2026 e NT 007/2024/SVES/SEMUS, não há indicação de profilaxia neste cenário. A pessoa foi orientada a retornar imediatamente se o animal morrer, desaparecer ou apresentar sinais de raiva.',texto:'<p>Cão/gato saudável e observável: <strong>não iniciar vacina ou soro</strong>.</p><ul><li>Lavar o ferimento com água e sabão</li><li>Observar o animal por 10 dias</li><li>Se morrer, desaparecer ou ficar raivoso: procurar a UBS imediatamente</li><li>Animal que morrer durante observação: acionar UVZ São Luís (98) 99164-9301</li></ul>'}},
   'gravidade-cao':{id:'gravidade-cao',num:4,total:5,pergunta:'Qual a gravidade da exposição?',opcoes:[{t:'Leve — ferimento superficial em tronco ou membros (exceto mãos/pés/face)',p:'vacinado-leve-cao'},{t:'Grave — cabeça, face, pescoço, mão, profunda, múltipla ou lambedura de mucosa',p:'vacinado-prev'}]},
   'vacinado-leve-cao':{id:'vacinado-leve-cao',num:5,total:5,resultado:{tipo:'ra',titulo:'⚠️ Iniciar profilaxia parcial e observar o animal',conclusao:'Conduta: 2 doses de vacina (D0 e D3) e observação do animal por 10 dias.',justificativa:'Animal clinicamente suspeito de raiva com exposição leve. Iniciado esquema profilático parcial (vacina D0 e D3). O animal será observado por 10 dias. Se a suspeita for descartada, o esquema é suspenso. Se o animal morrer, desaparecer ou ficar raivoso, o esquema é completado até 4 doses.',texto:'<p>Animal suspeito + exposição leve:</p><ul><li>Lavar o ferimento com água e sabão</li><li>2 doses de vacina: D0 e D3</li><li>Observar o animal por 10 dias</li><li>Suspeita descartada: suspender e encerrar</li><li>Animal morreu/desapareceu/ficou raivoso: completar até 4 doses (D7 a D10 + D14)</li></ul>'}},
   'gravidade':{id:'gravidade',num:3,total:4,pergunta:'Qual a gravidade da exposição?',opcoes:[{t:'Leve — ferimento superficial em tronco ou membros (exceto mãos/pés/face)',p:'result-leve'},{t:'Grave — cabeça, face, pescoço, mão, profunda, múltipla ou lambedura de mucosa',p:'vacinado-prev'},{t:'Exposição a morcego (qualquer tipo de contato)',p:'vacinado-prev'}]},
