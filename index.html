@@ -6,11 +6,11 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Antirrábica SLZ">
 <meta name="theme-color" content="#00529B">
-<meta name="description" content="Aplicativo de orientação para profilaxia antirrábica humana em São Luís/MA, com geração de comprovante em PDF.">
+<meta name="description" content="Aplicativo de orientação para atendimento antirrábico humano e acidentes por animais peçonhentos em São Luís/MA, com geração de comprovante em PDF.">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<title>Profilaxia Antirrábica — São Luís</title>
+<title>Acidentes com Animais — São Luís</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
@@ -141,6 +141,28 @@ section.ativa{display:block}
 .legenda-esquema ul{margin:.45rem 0 .35rem 1rem}
 .legenda-esquema li{margin-bottom:3px}
 
+
+/* Módulos / página inicial */
+.mod-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-top:1rem}
+.mod-card{background:#fff;border:1px solid #ddd7cc;border-radius:18px;padding:1.15rem;box-shadow:var(--s);display:flex;gap:1rem;align-items:flex-start;cursor:pointer;transition:.2s}
+.mod-card:hover{transform:translateY(-2px);border-color:var(--v);box-shadow:0 6px 18px rgba(0,82,155,.14)}
+.mod-ico{width:54px;height:54px;border-radius:16px;background:var(--azc);display:flex;align-items:center;justify-content:center;font-size:27px;flex:0 0 54px}
+.mod-card h3{font-size:1.05rem;color:var(--v);margin-bottom:.25rem}
+.mod-card p{font-size:.9rem;color:var(--c);line-height:1.45}
+.pe-info{background:#f4f8fb;border-left:4px solid var(--v);padding:12px;border-radius:10px;margin-bottom:1rem;font-size:13.5px}
+.pe-result-list{margin:.65rem 0 0 1rem}
+.pe-result-list li{margin-bottom:.25rem}
+.tag-pe{display:inline-block;font-size:11px;letter-spacing:.05em;text-transform:uppercase;background:#e9f7ef;color:#146c43;border:1px solid #bfe5ce;border-radius:999px;padding:.15rem .5rem;margin-bottom:.55rem}
+.warn-pe{background:#fff3d4;border:1px solid #f0d58b;border-radius:12px;padding:.75rem;margin-top:.75rem;font-size:13px;color:#614600}
+
+
+/* Peçonhentos v2.0 */
+.id-tip{background:#fff;border:1px dashed #91bde6;border-radius:12px;padding:.7rem;margin:.65rem 0;font-size:13px;color:var(--c)}
+.id-tip strong{color:var(--v)}
+.soro-box{background:#f7fbff;border-left:4px solid var(--v);border-radius:10px;padding:.75rem;margin-top:.65rem;font-size:13.5px}
+.soro-box strong{color:var(--v)}
+.dose-note{background:#fff7df;border:1px solid #f0d58b;border-radius:10px;padding:.65rem;margin-top:.6rem;font-size:13px;color:#614600}
+
 </style>
 </head>
 <body>
@@ -149,7 +171,7 @@ section.ativa{display:block}
 <header>
   <div class="inner">
     <div class="logo"><img src="data:image/png;base64,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" alt="Ícone do app"></div>
-    <div><h1>Profilaxia Antirrábica — São Luís/MA</h1><p>NT 35/2026 · NT 007/2024 SEMUS · SVES · COVEP São Luís</p></div>
+    <div><h1>Acidentes com Animais — São Luís/MA</h1><p>Antirrábica · Animais Peçonhentos · SVES · COVEP São Luís</p></div>
     <button class="bh" id="bhr" onclick="reiniciar()">↩ Reiniciar</button>
   </div>
 </header>
@@ -161,7 +183,9 @@ section.ativa{display:block}
     <button type="button" onclick="toggleMenu(false)" aria-label="Fechar menu">×</button>
   </div>
   <ul>
-    <li><a href="#" class="ativo" onclick="sec('algoritmo',this)">Algoritmo</a></li>
+    <li><a href="#" class="ativo" onclick="sec('inicio-app',this)">Início</a></li>
+    <li><a href="#" onclick="sec('algoritmo',this)">Algoritmo Antirrábica</a></li>
+    <li><a href="#" onclick="sec('peconhentos',this)">Algoritmo Peçonhentos</a></li>
     <li><a href="#" onclick="sec('esquemas',this)">Esquemas</a></li>
     <li><a href="#" onclick="sec('unidades',this)">Onde Vacinar</a></li>
     <li><a href="#" onclick="sec('soroterapia',this)">Soroterapia</a></li>
@@ -173,8 +197,53 @@ section.ativa{display:block}
 </nav>
 <main>
 
+
+<!-- INÍCIO / SELEÇÃO DE MÓDULO -->
+<section id="inicio-app" class="ativa">
+  <div class="card" style="border-left:3px solid var(--v)">
+    <div class="ct">📲 Apoio à decisão em acidentes com animais</div>
+    <p style="font-size:13.5px;color:var(--c);line-height:1.5">Selecione o módulo conforme o tipo de atendimento. O app mantém o nome “Antirrábica SLZ”, mas passa a reunir também orientações para acidentes por animais peçonhentos.</p>
+  </div>
+  <div class="mod-grid">
+    <button class="mod-card" type="button" onclick="irModulo('algoritmo')">
+      <div class="mod-ico">💉</div>
+      <div><h3>Atendimento antirrábico</h3><p>Algoritmo para exposição à raiva, indicação de vacina/soro e geração de comprovante de orientação.</p></div>
+    </button>
+    <button class="mod-card" type="button" onclick="irModulo('peconhentos')">
+      <div class="mod-ico">🐍</div>
+      <div><h3>Animais peçonhentos</h3><p>Algoritmo inicial para acidentes com serpentes, escorpiões, aranhas, lagartas e abelhas, com alerta para soroterapia e unidade de referência.</p></div>
+    </button>
+  </div>
+  <div class="al" style="margin-top:1rem"><strong>Aviso:</strong> os algoritmos são ferramentas de apoio. Não substituem avaliação clínica presencial, regulação, notificação e condutas institucionais vigentes.</div>
+</section>
+
+<!-- ALGORITMO ANIMAIS PEÇONHENTOS -->
+<section id="peconhentos">
+  <div class="card" style="border-left:3px solid var(--v)">
+    <div class="ct">🐍 Avaliador inicial — acidentes por animais peçonhentos</div>
+    <p style="font-size:13.5px;color:var(--c);line-height:1.5">Fluxo de apoio baseado em publicações oficiais do Ministério da Saúde. Prioriza classificação inicial, sinais de gravidade, necessidade de referência e orientação sobre soroterapia.</p>
+  </div>
+  <div class="pe-info">
+    <strong>Primeiros cuidados gerais:</strong> lavar o local com água e sabão; manter o membro em repouso, elevado quando aplicável; retirar anéis, pulseiras e acessórios; não fazer torniquete, cortes, sucção ou aplicação de substâncias. Fotografar o animal apenas se for seguro.
+  </div>
+  <div id="pe-pgc" style="display:none"><div class="pb"><div class="pf" id="pe-pgf" style="width:0%"></div></div><div class="bc" id="pe-bc"></div></div>
+  <div class="card" id="pe-card">
+    <div class="ph"><div class="pnum" id="pe-pn">1</div><p class="perg" id="pe-pt"></p></div>
+    <div class="opcoes" id="pe-oc"></div>
+    <div id="pe-rc" style="display:none"></div>
+  </div>
+  <div class="card">
+    <div class="ct">📌 Observações importantes</div>
+    <ul class="il">
+      <li><span class="ico">🚨</span><span>Acidentes por animais peçonhentos são de notificação compulsória imediata, em até 24 horas, quando aplicável ao agravo.</span></li>
+      <li><span class="ico">🏥</span><span>Casos com indicação de soro devem ser encaminhados para unidade de referência com antiveneno disponível.</span></li>
+      <li><span class="ico">📞</span><span>Em caso de dúvida diagnóstica, considerar apoio do CIATox/serviço de referência e da Vigilância Epidemiológica.</span></li>
+    </ul>
+  </div>
+</section>
+
 <!-- ALGORITMO -->
-<section id="algoritmo" class="ativa">
+<section id="algoritmo">
   <div class="card" style="border-left:3px solid var(--v)">
     <div class="ct">🔍 Avaliador de conduta antirrábica</div>
     <p style="font-size:13.5px;color:var(--c);line-height:1.5">Responda as perguntas para orientação sobre vacina e/ou soro. Baseado nas NT do MS (35/2026, 8/2022, 134/2022) e NT 007/2024/SVES/SEMUS São Luís.</p>
@@ -800,6 +869,17 @@ section.ativa{display:block}
     </ul>
   </div>
   <div class="al"><strong>Aviso:</strong> O aplicativo é uma ferramenta de apoio à orientação e não substitui avaliação clínica presencial, investigação epidemiológica ou decisão técnica do serviço de saúde.</div>
+
+  <div class="card">
+    <div class="ct">📚 Acidentes por animais peçonhentos — referências incorporadas</div>
+    <ul class="il">
+      <li><span class="ico">📘</span><span>Ministério da Saúde. <strong>Guia de Animais Peçonhentos do Brasil</strong>. Brasília: MS; 2024.</span></li>
+      <li><span class="ico">📘</span><span>Ministério da Saúde. <strong>Protocolo Clínico e Diretrizes Terapêuticas dos Acidentes Ofídicos</strong>. Brasília: MS; 2026.</span></li>
+      <li><span class="ico">📘</span><span>Ministério da Saúde. <strong>Protocolo Clínico e Diretrizes Terapêuticas dos Acidentes Escorpiônicos</strong>. Brasília: MS; 2026.</span></li>
+      <li><span class="ico">📘</span><span>Ministério da Saúde/FUNASA. <strong>Manual de Diagnóstico e Tratamento de Acidentes por Animais Peçonhentos</strong>. 2ª ed. Brasília: FUNASA; 2001.</span></li>
+    </ul>
+  </div>
+
 </section>
 
 </main>
@@ -900,6 +980,160 @@ function toggleMenu(forcar){
   backdrop.classList.toggle('aberto', abrir);
 }
 
+
+
+/* Algoritmo — Animais Peçonhentos v2.0 */
+const pePassos={
+  inicio:{id:'inicio',num:1,total:5,pergunta:'Qual animal esteve envolvido no acidente?',opcoes:[
+    {t:'Escorpião',p:'esc-sintomas'},
+    {t:'Serpente / cobra',p:'serpente-identificacao'},
+    {t:'Aranha',p:'aranha-tipo'},
+    {t:'Lagarta / taturana',p:'lagarta-sinais'},
+    {t:'Abelha, vespa ou marimbondo',p:'abelha-sinais'},
+    {t:'Não sei identificar o animal',p:'desconhecido'}
+  ]},
+
+  'desconhecido':{id:'desconhecido',num:2,total:2,resultado:{modulo:'peconhentos',tipo:'ra',titulo:'⚠️ Acidente com animal não identificado',conclusao:'Conduta: encaminhar para avaliação presencial. Se houver dor intensa, edema progressivo, sangramento, vômitos, alteração neurológica, falta de ar ou sinais sistêmicos, tratar como urgência.',justificativa:'A identificação do animal auxilia a definição do antiveneno, mas a conduta deve priorizar o quadro clínico, a gravidade e o acesso oportuno à unidade de referência. Fotografar o animal apenas se for seguro; não capturar ou matar.',texto:'<span class="tag-pe">Avaliação presencial</span><p>Não foi possível identificar o animal. Procure atendimento imediatamente se houver sinais de gravidade.</p><ul class="pe-result-list"><li>Não fazer torniquete, cortes, sucção ou uso de substâncias.</li><li>Levar foto do animal se houver, tirada com segurança.</li><li>Acionar unidade de referência/CIATox em caso de dúvida diagnóstica.</li></ul>'}},
+
+  /* ESCORPIÃO */
+  'esc-sintomas':{id:'esc-sintomas',num:2,total:3,pergunta:'Após a picada de escorpião, quais manifestações estão presentes?',opcoes:[
+    {t:'Apenas dor/local: dor, vermelhidão, formigamento ou sudorese discreta',p:'esc-leve'},
+    {t:'Sintomas sistêmicos leves/moderados: náuseas, alguns vômitos, sudorese, agitação, alteração de pressão ou batimentos',p:'esc-moderado'},
+    {t:'Sinais graves: vômitos repetidos, salivação intensa, sonolência/agitação intensa, convulsão, falta de ar, choque ou edema pulmonar',p:'esc-grave'}
+  ]},
+  'esc-leve':{id:'esc-leve',num:3,total:3,resultado:{modulo:'peconhentos',tipo:'rv',titulo:'✅ Escorpionismo leve — sem indicação de soro',conclusao:'Conduta: tratamento sintomático e observação clínica conforme idade, sintomas e organização do serviço. Não há indicação de soro em caso leve.',justificativa:'No escorpionismo leve predominam manifestações locais. O Protocolo Clínico e Diretrizes Terapêuticas do Ministério da Saúde não recomenda soro antiveneno para casos leves. Crianças, especialmente menores de 10 anos, exigem maior cautela e observação.',texto:'<span class="tag-pe">Escorpião · Leve</span><p>Não há indicação de soro antiescorpiônico no quadro leve.</p><ul class="pe-result-list"><li>Controle da dor conforme avaliação clínica.</li><li>Observar evolução, especialmente em crianças.</li><li>Retornar imediatamente se surgirem vômitos, sudorese intensa, alteração respiratória, sonolência ou piora clínica.</li></ul>'}},
+  'esc-moderado':{id:'esc-moderado',num:3,total:3,resultado:{modulo:'peconhentos',tipo:'ra',titulo:'⚠️ Escorpionismo moderado — soro indicado',conclusao:'Conduta: encaminhar para unidade de referência para soroterapia.',justificativa:'Casos moderados apresentam quadro local associado a manifestações sistêmicas de pequena intensidade. O Protocolo Clínico e Diretrizes Terapêuticas do Ministério da Saúde recomenda soro para escorpionismo moderado.',texto:'<span class="tag-pe">Escorpião · Moderado</span><p>Há indicação de soroterapia em unidade de referência.</p><div class="soro-box"><strong>Soro indicado:</strong> Soro antiescorpiônico (SAEsc).<br><strong>Alternativa:</strong> Soro antiaracnídico (SAA), quando não houver soro antiescorpiônico disponível ou em situações específicas definidas pela referência.<br><strong>Dose de referência:</strong> 3 frascos-ampolas.</div><div class="dose-note">A dose do soro é definida pela gravidade do acidente e pela quantidade estimada de veneno circulante, não pelo peso da pessoa.</div><ul class="pe-result-list"><li>Encaminhar para referência com soro.</li><li>Monitorar sinais vitais e evolução clínica.</li><li>Crianças ≤10 anos devem ser tratadas com maior cautela.</li></ul>'}},
+  'esc-grave':{id:'esc-grave',num:3,total:3,resultado:{modulo:'peconhentos',tipo:'ra',titulo:'🚨 Escorpionismo grave — urgência com soro',conclusao:'Conduta: urgência/emergência. Indicar soroterapia, suporte clínico e monitorização.',justificativa:'Casos graves incluem vômitos incoercíveis, sudorese profusa, salivação intensa, alteração cardiocirculatória/respiratória, convulsões, insuficiência cardíaca ou edema pulmonar. O Protocolo Clínico e Diretrizes Terapêuticas do Ministério da Saúde recomenda soroterapia imediata.',texto:'<span class="tag-pe">Escorpião · Grave</span><p><strong>Emergência:</strong> encaminhar imediatamente para referência com soro e suporte.</p><div class="soro-box"><strong>Soro indicado:</strong> Soro antiescorpiônico (SAEsc).<br><strong>Alternativa:</strong> Soro antiaracnídico (SAA), quando não houver soro antiescorpiônico disponível ou em situações específicas definidas pela referência.<br><strong>Dose de referência:</strong> 6 frascos-ampolas.</div><div class="dose-note">A dose do soro é definida pela gravidade do acidente e pela quantidade estimada de veneno circulante, não pelo peso da pessoa.</div><ul class="pe-result-list"><li>Monitorização contínua e suporte conforme gravidade.</li><li>Não aguardar piora para regular/encaminhar.</li></ul>'}},
+
+  /* SERPENTES */
+  'serpente-identificacao':{id:'serpente-identificacao',num:2,total:5,pergunta:'Você consegue observar alguma característica da serpente?',opcoes:[
+    {t:'Tem chocalho/guizo na ponta da cauda',p:'crotalico-grav'},
+    {t:'Tem cauda com escamas eriçadas/arrepiadas, parecendo “espinhos”',p:'laquetico-grav'},
+    {t:'Tem anéis coloridos ao redor do corpo, principalmente vermelho, preto e branco',p:'elapidico-grav'},
+    {t:'Não tem guizo nem anéis coloridos; cauda lisa; parece jararaca/urutu/caiçaca',p:'botropico-grav'},
+    {t:'Tenho foto, mas não sei identificar essas características',p:'serpente-desconhecida'},
+    {t:'Não vi ou não sei informar',p:'serpente-desconhecida'}
+  ]},
+  'serpente-desconhecida':{id:'serpente-desconhecida',num:3,total:3,resultado:{modulo:'peconhentos',tipo:'ra',titulo:'⚠️ Acidente ofídico sem identificação — avaliar em referência',conclusao:'Conduta: encaminhar para atendimento imediato, avaliação clínica, exames conforme protocolo e definição de soroterapia pela equipe de referência.',justificativa:'Nos acidentes ofídicos, a identificação da serpente ajuda a definir o soro, mas a classificação clínica é essencial. Quando não há identificação, a avaliação clínica e laboratorial deve orientar a conduta.',texto:'<span class="tag-pe">Serpente · Não identificada</span><p>Encaminhar para avaliação em unidade com capacidade de manejo de acidente ofídico.</p><div class="id-tip"><strong>Como tentar identificar pela foto:</strong> guizo na cauda sugere cascavel; cauda com escamas eriçadas sugere surucucu; anéis coloridos ao redor do corpo devem ser considerados coral verdadeira até avaliação técnica; cauda lisa e ausência desses sinais pode sugerir jararaca/urutu, mas a confirmação deve ser técnica.</div><ul class="pe-result-list"><li>Não capturar ou matar a serpente.</li><li>Fotografar à distância segura, se possível.</li><li>Observar edema, sangramentos, sinais neurológicos, urina escura e estado geral.</li></ul>'}},
+  'botropico-grav':{id:'botropico-grav',num:3,total:5,pergunta:'No acidente provável por jararaca/urutu/caiçaca, qual a gravidade clínica?',opcoes:[
+    {t:'Leve — dor/edema até 1 segmento; sangramento discreto ou ausente',p:'botropico-leve'},
+    {t:'Moderado — dor/edema em 2 segmentos; sangramento discreto ou ausente',p:'botropico-moderado'},
+    {t:'Grave — edema em 3 segmentos, hemorragia grave, queda de pressão/choque ou alteração renal',p:'botropico-grave'}
+  ]},
+  'botropico-leve':{id:'botropico-leve',num:4,total:5,resultado:{modulo:'peconhentos',tipo:'ra',titulo:'⚠️ Acidente botrópico provável leve — soro indicado',conclusao:'Conduta: encaminhar para unidade de referência para soroterapia.',justificativa:'Acidentes botrópicos prováveis, como jararaca, urutu e caiçaca, podem causar edema, sangramentos e alterações de coagulação. O PCDT/MS recomenda soroterapia conforme gravidade.',texto:'<span class="tag-pe">Serpente · Botrópico leve</span><p>Há indicação de soro em unidade de referência.</p><div class="soro-box"><strong>Soro indicado:</strong> Soro antibotrópico pentavalente (SABR).<br><strong>Alternativas conforme disponibilidade/dúvida diagnóstica:</strong> Soro antibotrópico-laquético (SABL) ou Soro antibotrópico-crotálico (SABC).<br><strong>Dose de referência:</strong> 3 frascos-ampolas.</div><div class="dose-note">A dose do soro antiveneno não é calculada pelo peso da pessoa. Ela é definida pela gravidade do acidente e pela quantidade de veneno a neutralizar.</div><ul class="pe-result-list"><li>Encaminhar para referência com antiveneno.</li><li>Monitorar edema, sangramentos e exames conforme protocolo.</li></ul>'}},
+  'botropico-moderado':{id:'botropico-moderado',num:4,total:5,resultado:{modulo:'peconhentos',tipo:'ra',titulo:'⚠️ Acidente botrópico provável moderado — soro indicado',conclusao:'Conduta: encaminhar para unidade de referência para soroterapia.',justificativa:'Edema em dois segmentos caracteriza quadro moderado no PCDT/MS, com indicação de soroterapia em dose correspondente.',texto:'<span class="tag-pe">Serpente · Botrópico moderado</span><p>Há indicação de soro em unidade de referência.</p><div class="soro-box"><strong>Soro indicado:</strong> Soro antibotrópico pentavalente (SABR).<br><strong>Alternativas conforme disponibilidade/dúvida diagnóstica:</strong> Soro antibotrópico-laquético (SABL) ou Soro antibotrópico-crotálico (SABC).<br><strong>Dose de referência:</strong> 6 frascos-ampolas.</div><div class="dose-note">A dose do soro antiveneno não é calculada pelo peso da pessoa. Ela é definida pela gravidade do acidente e pela quantidade de veneno a neutralizar.</div><ul class="pe-result-list"><li>Encaminhamento imediato para referência.</li><li>Avaliar sinais sistêmicos e complicações.</li></ul>'}},
+  'botropico-grave':{id:'botropico-grave',num:4,total:5,resultado:{modulo:'peconhentos',tipo:'ra',titulo:'🚨 Acidente botrópico provável grave — urgência',conclusao:'Conduta: emergência. Encaminhar para unidade de referência para soroterapia e monitoramento de complicações.',justificativa:'Edema em três segmentos ou complicações como hemorragia grave, queda de pressão/choque ou alteração renal classificam o caso como grave.',texto:'<span class="tag-pe">Serpente · Botrópico grave</span><p><strong>Emergência:</strong> há indicação de soro e suporte.</p><div class="soro-box"><strong>Soro indicado:</strong> Soro antibotrópico pentavalente (SABR).<br><strong>Alternativas conforme disponibilidade/dúvida diagnóstica:</strong> Soro antibotrópico-laquético (SABL) ou Soro antibotrópico-crotálico (SABC).<br><strong>Dose de referência:</strong> 12 frascos-ampolas.</div><div class="dose-note">A dose do soro antiveneno não é calculada pelo peso da pessoa. Ela é definida pela gravidade do acidente e pela quantidade de veneno a neutralizar.</div><ul class="pe-result-list"><li>Monitorar choque, hemorragia e função renal.</li><li>Encaminhar/regular sem atraso.</li></ul>'}},
+  'crotalico-grav':{id:'crotalico-grav',num:3,total:5,pergunta:'No acidente provável por cascavel, qual a gravidade clínica?',opcoes:[
+    {t:'Leve — sinais neurológicos discretos, sem dor muscular, urina escura ou diminuição da urina',p:'crotalico-leve'},
+    {t:'Moderado — sinais neurológicos evidentes com dor muscular e urina escura discretas',p:'crotalico-moderado'},
+    {t:'Grave — neuroparalisia evidente, dor muscular/urina escura intensas e/ou pouca urina',p:'crotalico-grave'}
+  ]},
+  'crotalico-leve':{id:'crotalico-leve',num:4,total:5,resultado:{modulo:'peconhentos',tipo:'ra',titulo:'⚠️ Acidente crotálico provável leve — soro indicado',conclusao:'Conduta: encaminhar para unidade de referência para soroterapia.',justificativa:'Cascavéis podem causar manifestações neurológicas, musculares e alteração renal. O PCDT/MS recomenda soroterapia conforme gravidade.',texto:'<span class="tag-pe">Serpente · Crotálico leve</span><p>Há indicação de soro em unidade de referência.</p><div class="soro-box"><strong>Soro indicado:</strong> Soro anticrotálico (SAC).<br><strong>Alternativa conforme disponibilidade/dúvida diagnóstica:</strong> Soro antibotrópico-crotálico (SABC).<br><strong>Dose de referência:</strong> 5 frascos-ampolas.</div><div class="dose-note">A dose do soro antiveneno não é calculada pelo peso da pessoa. Ela é definida pela gravidade do acidente e pela quantidade de veneno a neutralizar.</div><ul class="pe-result-list"><li>Avaliar sinais neuroparalíticos e função renal.</li><li>Monitorar urina escura, dor muscular e redução da diurese.</li></ul>'}},
+  'crotalico-moderado':{id:'crotalico-moderado',num:4,total:5,resultado:{modulo:'peconhentos',tipo:'ra',titulo:'⚠️ Acidente crotálico provável moderado — soro indicado',conclusao:'Conduta: encaminhar para unidade de referência para soroterapia.',justificativa:'Manifestações neuroparalíticas evidentes, dor muscular e urina escura discretas indicam quadro moderado.',texto:'<span class="tag-pe">Serpente · Crotálico moderado</span><p>Há indicação de soro em unidade de referência.</p><div class="soro-box"><strong>Soro indicado:</strong> Soro anticrotálico (SAC).<br><strong>Alternativa conforme disponibilidade/dúvida diagnóstica:</strong> Soro antibotrópico-crotálico (SABC).<br><strong>Dose de referência:</strong> 10 frascos-ampolas.</div><div class="dose-note">A dose do soro antiveneno não é calculada pelo peso da pessoa. Ela é definida pela gravidade do acidente e pela quantidade de veneno a neutralizar.</div><ul class="pe-result-list"><li>Encaminhar para referência.</li><li>Monitorar rabdomiólise e alteração renal.</li></ul>'}},
+  'crotalico-grave':{id:'crotalico-grave',num:4,total:5,resultado:{modulo:'peconhentos',tipo:'ra',titulo:'🚨 Acidente crotálico provável grave — urgência',conclusao:'Conduta: emergência. Encaminhar para unidade de referência para soroterapia, suporte e monitoramento intensivo.',justificativa:'Neuroparalisia evidente, dor muscular/urina escura intensas e pouca urina indicam gravidade no acidente crotálico.',texto:'<span class="tag-pe">Serpente · Crotálico grave</span><p><strong>Emergência:</strong> há indicação de soro e suporte.</p><div class="soro-box"><strong>Soro indicado:</strong> Soro anticrotálico (SAC).<br><strong>Alternativa conforme disponibilidade/dúvida diagnóstica:</strong> Soro antibotrópico-crotálico (SABC).<br><strong>Dose de referência:</strong> 20 frascos-ampolas.</div><div class="dose-note">A dose do soro antiveneno não é calculada pelo peso da pessoa. Ela é definida pela gravidade do acidente e pela quantidade de veneno a neutralizar.</div><ul class="pe-result-list"><li>Atenção para insuficiência respiratória e alteração renal aguda.</li><li>Encaminhar/regular sem atraso.</li></ul>'}},
+  'laquetico-grav':{id:'laquetico-grav',num:3,total:5,pergunta:'No acidente provável por surucucu, qual a gravidade clínica?',opcoes:[
+    {t:'Moderado — quadro local presente, podendo haver sangramentos, sem manifestações vagais',p:'laquetico-moderado'},
+    {t:'Grave — quadro local intenso, hemorragia intensa e/ou manifestações vagais',p:'laquetico-grave'}
+  ]},
+  'laquetico-moderado':{id:'laquetico-moderado',num:4,total:5,resultado:{modulo:'peconhentos',tipo:'ra',titulo:'⚠️ Acidente laquético provável moderado — soro indicado',conclusao:'Conduta: encaminhar para unidade de referência para soroterapia.',justificativa:'Surucucus podem causar quadro local importante, sangramentos e manifestações vagais. O PCDT/MS classifica acidentes laquéticos como moderados ou graves.',texto:'<span class="tag-pe">Serpente · Laquético moderado</span><p>Há indicação de soro em unidade de referência.</p><div class="soro-box"><strong>Soro indicado:</strong> Soro antibotrópico-laquético (SABL).<br><strong>Dose de referência:</strong> 10 frascos-ampolas.</div><div class="dose-note">A dose do soro antiveneno não é calculada pelo peso da pessoa. Ela é definida pela gravidade do acidente e pela quantidade de veneno a neutralizar.</div><ul class="pe-result-list"><li>Monitorar sangramentos e manifestações vagais.</li><li>Encaminhar para referência.</li></ul>'}},
+  'laquetico-grave':{id:'laquetico-grave',num:4,total:5,resultado:{modulo:'peconhentos',tipo:'ra',titulo:'🚨 Acidente laquético provável grave — urgência',conclusao:'Conduta: emergência. Encaminhar para unidade de referência para soroterapia e suporte.',justificativa:'Quadro local intenso, hemorragia intensa e/ou manifestações vagais caracterizam gravidade no acidente laquético.',texto:'<span class="tag-pe">Serpente · Laquético grave</span><p><strong>Emergência:</strong> há indicação de soro e suporte.</p><div class="soro-box"><strong>Soro indicado:</strong> Soro antibotrópico-laquético (SABL).<br><strong>Dose de referência:</strong> 20 frascos-ampolas.</div><div class="dose-note">A dose do soro antiveneno não é calculada pelo peso da pessoa. Ela é definida pela gravidade do acidente e pela quantidade de veneno a neutralizar.</div><ul class="pe-result-list"><li>Encaminhar/regular sem atraso.</li><li>Monitorar choque, sangramentos e função renal.</li></ul>'}},
+  'elapidico-grav':{id:'elapidico-grav',num:3,total:5,pergunta:'No acidente provável por coral verdadeira, há sinais neuromusculares?',opcoes:[
+    {t:'Apenas dor/formigamento local, sem fraqueza ou queda da pálpebra',p:'elapidico-leve'},
+    {t:'Queda da pálpebra ou diminuição objetiva da força, sem paralisia',p:'elapidico-moderado'},
+    {t:'Fraqueza intensa/paralisia, dificuldade de engolir, salivação ou respiração superficial',p:'elapidico-grave'}
+  ]},
+  'elapidico-leve':{id:'elapidico-leve',num:4,total:5,resultado:{modulo:'peconhentos',tipo:'ra',titulo:'⚠️ Acidente elapídico provável leve — observação rigorosa',conclusao:'Conduta: observação clínica mínima de 24 horas em serviço de referência; considerar soro se evoluir com fraqueza ou sinais neuromusculares.',justificativa:'Por segurança, serpentes com anéis coloridos devem ser consideradas potencialmente perigosas até avaliação técnica. O PCDT/MS recomenda observação rigorosa mesmo em quadros leves.',texto:'<span class="tag-pe">Serpente · Coral provável leve</span><p><strong>Observação obrigatória:</strong> pelo menos 24 horas.</p><div class="id-tip"><strong>Atenção:</strong> toda serpente com anéis coloridos ao redor do corpo, especialmente vermelho, preto e branco, deve ser considerada coral verdadeira até avaliação técnica.</div><ul class="pe-result-list"><li>Reclassificar se surgir queda da pálpebra, fraqueza, dificuldade de engolir ou alteração respiratória.</li><li>Manter em serviço capaz de resposta rápida.</li></ul>'}},
+  'elapidico-moderado':{id:'elapidico-moderado',num:4,total:5,resultado:{modulo:'peconhentos',tipo:'ra',titulo:'🚨 Acidente elapídico provável moderado — soro indicado',conclusao:'Conduta: urgência. Encaminhar para unidade de referência para soroterapia e monitoramento respiratório.',justificativa:'Manifestações de fraqueza aguda, como queda da pálpebra e diminuição objetiva da força muscular, indicam quadro moderado.',texto:'<span class="tag-pe">Serpente · Coral provável moderado</span><p>Há indicação de soro em unidade de referência.</p><div class="soro-box"><strong>Soro indicado:</strong> Soro antielapídico bivalente (SAEl).<br><strong>Dose de referência:</strong> 5 frascos-ampolas.</div><div class="dose-note">A dose do soro antiveneno não é calculada pelo peso da pessoa. Ela é definida pela gravidade do acidente e pela quantidade de veneno a neutralizar.</div><ul class="pe-result-list"><li>Monitorar respiração e progressão neuromuscular.</li><li>Encaminhar/regular como urgência.</li></ul>'}},
+  'elapidico-grave':{id:'elapidico-grave',num:4,total:5,resultado:{modulo:'peconhentos',tipo:'ra',titulo:'🚨 Acidente elapídico provável grave — emergência respiratória',conclusao:'Conduta: emergência. Encaminhar para unidade de referência para soroterapia, suporte ventilatório se necessário e monitorização contínua.',justificativa:'Fraqueza intensa, paralisia, dificuldade de engolir, salivação ou respiração superficial indicam gravidade e risco de insuficiência respiratória.',texto:'<span class="tag-pe">Serpente · Coral provável grave</span><p><strong>Emergência:</strong> há indicação de soro e suporte respiratório se necessário.</p><div class="soro-box"><strong>Soro indicado:</strong> Soro antielapídico bivalente (SAEl).<br><strong>Dose de referência:</strong> 10 frascos-ampolas.</div><div class="dose-note">A dose do soro antiveneno não é calculada pelo peso da pessoa. Ela é definida pela gravidade do acidente e pela quantidade de veneno a neutralizar.</div><ul class="pe-result-list"><li>Avaliar suporte ventilatório.</li><li>Encaminhar/regular imediatamente.</li></ul>'}},
+
+  /* ARANHAS */
+  'aranha-tipo':{id:'aranha-tipo',num:2,total:3,pergunta:'Qual aranha está envolvida ou é suspeita?',opcoes:[
+    {t:'Aranha-marrom (Loxosceles): pequena, marrom, comum em roupas, móveis, entulhos e locais escuros',p:'aranha-marrom'},
+    {t:'Armadeira / macaca (Phoneutria): grande, agressiva, pode levantar as pernas dianteiras',p:'aranha-armadeira'},
+    {t:'Viúva-negra (Latrodectus): pequena, escura, pode ter mancha vermelha',p:'aranha-viuva'},
+    {t:'Caranguejeira ou aranha-de-grama',p:'aranha-menor'},
+    {t:'Tenho foto, mas não sei identificar',p:'aranha-desconhecida'},
+    {t:'Não sei identificar',p:'aranha-desconhecida'}
+  ]},
+  'aranha-desconhecida':{id:'aranha-desconhecida',num:3,total:3,resultado:{modulo:'peconhentos',tipo:'ra',titulo:'⚠️ Aranha não identificada — avaliar gravidade',conclusao:'Conduta: avaliação clínica presencial. Se houver dor intensa, sintomas sistêmicos, necrose, hemólise, urina escura ou piora, encaminhar para referência.',justificativa:'Aranhas de importância médica no Brasil incluem Loxosceles, Phoneutria e Latrodectus. A identificação e o quadro clínico orientam a necessidade de soro.',texto:'<span class="tag-pe">Aranha · Não identificada</span><p>Procure atendimento para classificação e definição de conduta.</p><ul class="pe-result-list"><li>Não aplicar substâncias no local.</li><li>Levar foto do animal se houver, com segurança.</li></ul>'}},
+  'aranha-menor':{id:'aranha-menor',num:3,total:3,resultado:{modulo:'peconhentos',tipo:'rv',titulo:'✅ Aranha sem maior importância médica — sintomático',conclusao:'Conduta: tratamento sintomático e avaliação clínica se dor importante, alergia, infecção ou piora.',justificativa:'Acidentes por caranguejeiras e aranhas-de-grama geralmente são destituídos de maior importância médica, mas podem causar dor/irritação local.',texto:'<span class="tag-pe">Aranha · Baixa gravidade habitual</span><p>Sem indicação rotineira de soro. Avaliar sinais locais e alergia.</p>'}},
+  'aranha-armadeira':{id:'aranha-armadeira',num:3,total:3,resultado:{modulo:'peconhentos',tipo:'ra',titulo:'⚠️ Suspeita de armadeira — avaliar soro conforme gravidade',conclusao:'Conduta: avaliação em serviço de referência. Em casos moderados/graves, considerar soroterapia conforme protocolo e disponibilidade.',justificativa:'O Manual de Diagnóstico e Tratamento de Acidentes por Animais Peçonhentos orienta uso de soro antiaracnídico para acidentes por Phoneutria em casos moderados e graves.',texto:'<span class="tag-pe">Aranha · Phoneutria</span><p>Quadros com dor intensa ou manifestações sistêmicas devem ser avaliados em referência.</p><div class="soro-box"><strong>Soro de referência:</strong> Soro antiaracnídico (SAA).<br><strong>Dose de referência:</strong> moderado 2 a 4 frascos-ampolas; grave 5 a 10 frascos-ampolas, conforme avaliação.</div><div class="dose-note">A dose do soro antiveneno não é calculada pelo peso da pessoa. Ela é definida pela gravidade do acidente.</div>'}},
+  'aranha-marrom':{id:'aranha-marrom',num:3,total:3,resultado:{modulo:'peconhentos',tipo:'ra',titulo:'⚠️ Suspeita de aranha-marrom — avaliar necrose/hemólise',conclusao:'Conduta: avaliação em serviço de referência, especialmente se lesão necrótica, sintomas sistêmicos, hemólise ou urina escura. Soroterapia conforme gravidade.',justificativa:'Loxosceles é aranha de importância médica no Brasil. O tratamento e a indicação de soro dependem da forma clínica e gravidade.',texto:'<span class="tag-pe">Aranha · Loxosceles</span><p>Atenção para evolução lenta com necrose ou manifestações sistêmicas.</p><div class="soro-box"><strong>Soro de referência:</strong> Soro antiaracnídico (SAA) ou soro específico conforme disponibilidade e orientação da referência.<br><strong>Dose de referência:</strong> moderado 5 frascos-ampolas; grave 10 frascos-ampolas, conforme avaliação.</div><div class="dose-note">A dose do soro antiveneno não é calculada pelo peso da pessoa. Ela é definida pela gravidade do acidente.</div>'}},
+  'aranha-viuva':{id:'aranha-viuva',num:3,total:3,resultado:{modulo:'peconhentos',tipo:'ra',titulo:'⚠️ Suspeita de viúva-negra — avaliar soro',conclusao:'Conduta: avaliação em referência. Casos moderados/graves podem demandar soro conforme protocolo.',justificativa:'Latrodectus é gênero de importância médica; o Manual prevê soroterapia em quadros moderados e graves.',texto:'<span class="tag-pe">Aranha · Latrodectus</span><p>Avaliar dor intensa, contraturas, sintomas sistêmicos e gravidade.</p><div class="soro-box"><strong>Soro de referência:</strong> Soro antilatrodético (SALatr), quando disponível, conforme protocolo e avaliação da referência.<br><strong>Dose de referência:</strong> moderado 1 frasco-ampola; grave 2 frascos-ampolas.</div><div class="dose-note">A dose do soro antiveneno não é calculada pelo peso da pessoa. Ela é definida pela gravidade do acidente.</div>'}},
+
+  /* LAGARTAS */
+  'lagarta-sinais':{id:'lagarta-sinais',num:2,total:3,pergunta:'Após contato com lagarta/taturana, há sinais de gravidade?',opcoes:[
+    {t:'Apenas dor/queimação/vermelhidão local',p:'lagarta-local'},
+    {t:'Sangramento, manchas roxas, urina escura ou suspeita de Lonomia',p:'lagarta-lonomia'},
+    {t:'Não sei avaliar',p:'lagarta-avaliar'}
+  ]},
+  'lagarta-local':{id:'lagarta-local',num:3,total:3,resultado:{modulo:'peconhentos',tipo:'rv',titulo:'✅ Erucismo local — sintomático e observação',conclusao:'Conduta: lavar o local, controle sintomático e observação. Procurar atendimento se dor intensa, lesão extensa, sangramentos ou piora.',justificativa:'A maioria dos contatos com lagartas cursa com manifestações locais. Lagartas do gênero Lonomia são as de maior relevância por risco hemorrágico.',texto:'<span class="tag-pe">Lagarta · Local</span><p>Sem sinais sistêmicos informados. Orientar cuidados locais e vigilância de sinais de alarme.</p>'}},
+  'lagarta-lonomia':{id:'lagarta-lonomia',num:3,total:3,resultado:{modulo:'peconhentos',tipo:'ra',titulo:'🚨 Suspeita de Lonomia ou sangramento — urgência',conclusao:'Conduta: encaminhar imediatamente para referência/CIATox para avaliação de coagulação e necessidade de soro antilonômico.',justificativa:'Lagartas do gênero Lonomia podem ocasionar acidentes graves com síndrome hemorrágica, necessitando avaliação e tratamento específico.',texto:'<span class="tag-pe">Lagarta · Alarme</span><p><strong>Urgência:</strong> sangramento ou suspeita de Lonomia exige avaliação imediata.</p><div class="soro-box"><strong>Soro de referência:</strong> Soro antilonômico (SALon), conforme avaliação da referência e disponibilidade.</div><div class="dose-note">A dose do soro antiveneno não é calculada pelo peso da pessoa. Ela é definida pela gravidade e protocolo específico.</div><ul class="pe-result-list"><li>Não usar medicamentos sem avaliação.</li><li>Levar foto da lagarta se possível e seguro.</li><li>Avaliar coagulação conforme protocolo.</li></ul>'}},
+  'lagarta-avaliar':{id:'lagarta-avaliar',num:3,total:3,resultado:{modulo:'peconhentos',tipo:'ra',titulo:'⚠️ Acidente com lagarta — avaliar presencialmente',conclusao:'Conduta: avaliação em serviço de saúde para identificar sinais locais, hemorrágicos ou sistêmicos.',justificativa:'A identificação da lagarta e a presença de sinais hemorrágicos mudam a conduta; em dúvida, o caso deve ser avaliado presencialmente.',texto:'<span class="tag-pe">Lagarta · Dúvida</span><p>Procure atendimento para avaliação e orientação segura.</p>'}},
+
+  /* ABELHAS */
+  'abelha-sinais':{id:'abelha-sinais',num:2,total:3,pergunta:'No acidente com abelha/vespa/marimbondo, há sinais de gravidade?',opcoes:[
+    {t:'Picada única ou poucas picadas, apenas dor/vermelhidão local',p:'abelha-local'},
+    {t:'Múltiplas picadas/enxame',p:'abelha-multipla'},
+    {t:'Falta de ar, inchaço em face/língua, tontura/desmaio ou urticária generalizada',p:'abelha-anafilaxia'}
+  ]},
+  'abelha-local':{id:'abelha-local',num:3,total:3,resultado:{modulo:'peconhentos',tipo:'rv',titulo:'✅ Reação local — cuidados e observação',conclusao:'Conduta: cuidado local e observação. Procurar atendimento se houver reação alérgica, dor intensa, infecção ou piora.',justificativa:'Acidentes apílicos podem variar de reação local a anafilaxia ou intoxicação por múltiplas picadas; o quadro local isolado costuma demandar manejo sintomático.',texto:'<span class="tag-pe">Abelha/Vespa · Local</span><p>Sem sinais de gravidade informados. Observar sinais de alergia ou piora.</p>'}},
+  'abelha-multipla':{id:'abelha-multipla',num:3,total:3,resultado:{modulo:'peconhentos',tipo:'ra',titulo:'⚠️ Múltiplas picadas — avaliação urgente',conclusao:'Conduta: encaminhar para avaliação, monitoramento e suporte. Não há soro antiveneno específico de rotina; manejo é clínico conforme gravidade.',justificativa:'Múltiplas picadas podem causar intoxicação sistêmica, especialmente em crianças, idosos e pessoas com comorbidades.',texto:'<span class="tag-pe">Abelha/Vespa · Múltiplas picadas</span><p>Encaminhar para avaliação e observação.</p><ul class="pe-result-list"><li>Risco de reação tóxica sistêmica.</li><li>Avaliar função renal, hemólise/rabdomiólise e sinais vitais conforme clínica.</li></ul>'}},
+  'abelha-anafilaxia':{id:'abelha-anafilaxia',num:3,total:3,resultado:{modulo:'peconhentos',tipo:'ra',titulo:'🚨 Suspeita de anafilaxia — emergência',conclusao:'Conduta: emergência médica imediata. Priorizar suporte de via aérea, adrenalina conforme protocolo clínico, observação e regulação.',justificativa:'Falta de ar, edema de face/língua, síncope ou urticária generalizada após picada sugerem reação alérgica sistêmica potencialmente grave.',texto:'<span class="tag-pe">Abelha/Vespa · Anafilaxia</span><p><strong>Emergência:</strong> acionar atendimento imediato.</p><ul class="pe-result-list"><li>Não aguardar evolução.</li><li>Manejo conforme protocolo de anafilaxia.</li></ul>'}}
+};
+
+let peHist=[],peTrilha=[],pePA=pePassos['inicio'],peRA=null;
+
+function peRender(p){
+  document.getElementById('pe-pn').textContent=p.num||'';
+  document.getElementById('pe-pt').textContent=p.pergunta||'';
+  const oc=document.getElementById('pe-oc'),rc=document.getElementById('pe-rc');
+  if(p.resultado){
+    peRA=p.resultado;
+    oc.style.display='none'; rc.style.display='block';
+    rc.innerHTML='<div class="rbox '+p.resultado.tipo+'"><div class="rt">'+p.resultado.titulo+'</div><div class="rtx">'+p.resultado.texto+'</div><div class="warn-pe"><strong>Atenção:</strong> ferramenta de apoio. A conduta final deve considerar avaliação presencial, disponibilidade local de soro, regulação e protocolo vigente.</div></div><div class="btn-row"><button class="bvd" onclick="abrirPDFPe()">📄 Gerar comprovante PDF</button><button class="bol" onclick="peReiniciar()">↩ Reiniciar</button></div>';
+    document.getElementById('pe-pn').textContent='✓';
+  } else {
+    peRA=null; rc.style.display='none'; oc.style.display='flex';
+    oc.innerHTML='';
+    p.opcoes.forEach(function(o){
+      var btn=document.createElement('button');
+      btn.className='ob';
+      btn.innerHTML='<span>'+o.t+'</span><span class="s">›</span>';
+      btn.addEventListener('click',function(){peAvancar(o.p,o.t);});
+      oc.appendChild(btn);
+    });
+  }
+  if(peTrilha.length>0){
+    document.getElementById('pe-pgc').style.display='block';
+    document.getElementById('pe-pgf').style.width=Math.min(((p.num||1)/(p.total||4))*100,100)+'%';
+    document.getElementById('pe-bc').innerHTML=peTrilha.map(function(t,i){return '<span>'+(t.length>30?t.substring(0,30)+'…':t)+'</span>'+(i<peTrilha.length-1?'<span> › </span>':'');}).join('');
+  } else {document.getElementById('pe-pgc').style.display='none';}
+}
+function peAvancar(proxId,texto){
+  peHist.push(pePA.id);
+  peTrilha.push(texto.length>35?texto.substring(0,35)+'…':texto);
+  pePA=pePassos[proxId];
+  peRender(pePA);
+}
+function peReiniciar(){
+  peHist=[]; peTrilha=[]; peRA=null; pePA=pePassos['inicio']; peRender(pePA);
+}
+function abrirPDFPe(){
+  RA=peRA;
+  trilha=peTrilha.slice();
+  abrirPDF();
+}
+peRender(pePA);
+
+
+function irModulo(id){
+  var link = Array.from(document.querySelectorAll('nav a')).find(function(a){
+    return a.getAttribute('onclick') && a.getAttribute('onclick').indexOf("'" + id + "'") !== -1;
+  });
+  sec(id, link || null);
+}
+
 function sec(id,link){
   document.querySelectorAll('section').forEach(function(s){s.classList.remove('ativa');});
   document.getElementById(id).classList.add('ativa');
@@ -931,8 +1165,8 @@ function imprimirPDF(){
   }).join('');
   var html='<div class="pdf-doc">'
     +'<div class="pdf-topo">'
-    +'<div><div class="pdf-titulo">Comprovante de Orientação Antirrábica</div>'
-    +'<div class="pdf-subtitulo">Programa Nacional de Imunizações · SVES São Luís · UVZ São Luís</div></div>'
+    +'<div><div class="pdf-titulo">'+((RA&&RA.modulo==='peconhentos')?'Comprovante de Orientação — Animais Peçonhentos':'Comprovante de Orientação Antirrábica')+'</div>'
+    +'<div class="pdf-subtitulo">'+((RA&&RA.modulo==='peconhentos')?'COVEP/SVES/SEMUS São Luís · Acidentes por Animais Peçonhentos':'Programa Nacional de Imunizações · SVES São Luís · COVEP São Luís')+'</div></div>'
     +'<div class="pdf-data">'+data+' às '+hora+'</div></div>'
     +'<table class="pdf-dados">'
     +'<tr><td><strong>Pessoa atendida:</strong></td><td>'+nome+'</td></tr>'

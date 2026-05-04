@@ -97,3 +97,36 @@ As logos institucionais da página estão incorporadas diretamente no `index.htm
 2. Suba todos os arquivos desta versão diretamente na raiz da pasta/repositório.
 3. Aguarde alguns minutos e atualize a página com `Ctrl + F5`.
 4. Se já tiver aberto a versão anterior, limpe o cache do app: Chrome > F12 > Application > Service Workers > Unregister; depois Clear storage > Clear site data.
+
+
+## Atualização de unidades e colaboração técnica
+
+- Página **Onde Vacinar** atualizada com a relação de unidades de saúde com sala de vacina e imunobiológicos antirrábicos, conforme documento atualizado em 25/03/2026.
+- Página **Sobre o App** atualizada com seção de colaboração técnica.
+
+
+## Atualização: módulo de animais peçonhentos
+
+Esta versão acrescenta uma página inicial de seleção de módulo e o novo **Algoritmo Peçonhentos**, com fluxo de apoio para acidentes com escorpiões, serpentes, aranhas, lagartas e abelhas/vespas/marimbondos.
+
+O módulo foi baseado em publicações oficiais do Ministério da Saúde, incluindo:
+- Guia de Animais Peçonhentos do Brasil (2024);
+- PCDT dos Acidentes Ofídicos (2026);
+- PCDT dos Acidentes Escorpiônicos (2026);
+- Manual de Diagnóstico e Tratamento de Acidentes por Animais Peçonhentos (FUNASA/MS, 2001), usado de forma complementar para grupos ainda sem PCDT atualizado específico no material incorporado.
+
+A ferramenta é apoio à decisão e não substitui avaliação clínica presencial, regulação, CIATox ou protocolos locais.
+
+
+## Atualização: cabeçalho e seleção de módulos
+
+- A faixa azul do cabeçalho foi atualizada para **Acidentes com Animais — São Luís/MA**, contemplando atendimento antirrábico humano e acidentes por animais peçonhentos.
+- Os botões da tela inicial agora direcionam corretamente para os dois módulos: **Atendimento Antirrábico** e **Animais Peçonhentos**.
+
+
+## Atualização: Peçonhentos v2.0
+
+- Identificação guiada de serpentes por características visuais: guizo, cauda com escamas eriçadas, anéis coloridos e cauda lisa.
+- Resultados passaram a exibir o nome completo dos soros antes das siglas.
+- Incluído aviso padrão de que a dose do soro antiveneno não é calculada pelo peso da pessoa, mas definida pela gravidade e pela quantidade de veneno a neutralizar.
+- Linguagem ajustada para profissionais e população, com explicações mais didáticas.

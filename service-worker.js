@@ -1,4 +1,4 @@
-const CACHE_NAME = "antirrabica-slz-v14-uvz";
+const CACHE_NAME = "v21-reiniciar-fix";
 const urlsToCache = [
   "./",
   "./index.html",
