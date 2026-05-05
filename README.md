@@ -130,3 +130,17 @@ A ferramenta é apoio à decisão e não substitui avaliação clínica presenci
 - Resultados passaram a exibir o nome completo dos soros antes das siglas.
 - Incluído aviso padrão de que a dose do soro antiveneno não é calculada pelo peso da pessoa, mas definida pela gravidade e pela quantidade de veneno a neutralizar.
 - Linguagem ajustada para profissionais e população, com explicações mais didáticas.
+
+
+## Atualização: orientações e reinício no módulo peçonhentos
+
+- Página **Orientações** ampliada com orientações gerais para acidentes por animais peçonhentos.
+- Botão **Reiniciar** da barra superior ajustado para funcionar também durante o algoritmo de animais peçonhentos.
+
+
+## Atualização: página Soros
+
+- Página **Soro/IGHAR** substituída por **Soros**.
+- Inclusão de acordeões expansíveis para soros antirrábicos e antivenenos.
+- Mantidas tabelas detalhadas para Soro Antirrábico Equino (SAR/VINRAB) e Imunoglobulina Humana Antirrábica (IGHAR).
+- Soros antivenenos descritos com nome completo, sigla, indicação principal e doses de referência conforme gravidade.

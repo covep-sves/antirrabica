@@ -1,4 +1,4 @@
-const CACHE_NAME = "v21-reiniciar-fix";
+const CACHE_NAME = "antirrabica-slz-v26-soros";
 const urlsToCache = [
   "./",
   "./index.html",

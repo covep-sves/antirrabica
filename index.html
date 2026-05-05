@@ -163,6 +163,24 @@ section.ativa{display:block}
 .soro-box strong{color:var(--v)}
 .dose-note{background:#fff7df;border:1px solid #f0d58b;border-radius:10px;padding:.65rem;margin-top:.6rem;font-size:13px;color:#614600}
 
+
+/* Página Soros - acordeão */
+.soro-accordion{display:flex;flex-direction:column;gap:.75rem;margin-top:.75rem}
+.soro-item{border:1px solid #ded8cd;border-radius:14px;background:#fff;overflow:hidden;box-shadow:0 1px 8px rgba(0,0,0,.05)}
+.soro-btn{width:100%;border:0;background:#fff;padding:1rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;text-align:left;cursor:pointer;font-family:var(--f);color:var(--ce)}
+.soro-btn:hover{background:#f7fbff}
+.soro-title{font-weight:700;font-size:15px;color:var(--v);line-height:1.3}
+.soro-sub{font-size:12.5px;color:var(--c);margin-top:.15rem;font-weight:400}
+.soro-chevron{font-size:20px;color:var(--v);transition:.2s;flex:0 0 auto}
+.soro-item.aberto .soro-chevron{transform:rotate(180deg)}
+.soro-content{display:none;padding:0 1rem 1rem 1rem;border-top:1px solid #eee8dd}
+.soro-item.aberto .soro-content{display:block}
+.soro-note{background:#f7fbff;border-left:4px solid var(--v);border-radius:10px;padding:.75rem;margin:.75rem 0;font-size:13.5px;color:var(--c)}
+.soro-alert{background:#fff3d4;border:1px solid #f0d58b;border-radius:10px;padding:.7rem;margin:.75rem 0;font-size:13px;color:#614600}
+.soro-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.7rem;margin:.75rem 0}
+.soro-mini{background:#faf9f6;border:1px solid #e8e2d8;border-radius:10px;padding:.7rem;font-size:13px}
+.soro-mini strong{color:var(--v)}
+
 </style>
 </head>
 <body>
@@ -172,7 +190,7 @@ section.ativa{display:block}
   <div class="inner">
     <div class="logo"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAzXklEQVR4nO2dd3gc1bmH35nZptWqF6vbllxkWe4NxwZXTAfTCSTAJSEESELgci9JgISQQhIIuUkIKYRQEkyNAxiDTbWNC7hblpvkIkuyiq3ets3MuX/M7GglyzQLAtl5/fixd2fmnDNnzu+U7/vOrCSEENjYxCjyv7sANjb/TmwB2MQ0tgBsYhpbADYxjS0Am5jGFoBNTGMLwCamsQVgE9PYArCJaWwB2MQ0tgBsYhpbADYxjS0Am5jGFoBNTGMLwCamsQVgE9PYArCJaWwB2MQ0tgBsYhpbADYxjS0Am5jGFoBNTGMLwCamsQVgE9PYArCJaWwB2MQ0tgBsYhpbADYxjS0Am5jGFoBNTGMLwCamsQVgE9PYArCJaWwB2MQ0tgBsYhpbADYxjS0Am5jGFoBNTGMLwCamsQVgE9PYArCJaWwB2MQ0tgBsYhpbADYxjS0Am5jGFoBNTGMLwCamsQVgE9PYArCJaWwB2MQ0tgBsYhpbADYxjS0Am5jGFoBNTGMLwCamsQVgE9PYArCJaWwB2MQ0tgBsYhpbADYxjS0Am5jGFoBNTGMLwCamsQVgE9PYArCJaWwB2MQ0tgBsYhpbADYxjS0Am5jG8e/MXCBA6IAEkgRCAAIkGQnp31m0QUHXBUggS1/8e/lP5d82AgihIyEhSQqS2eAlSTY+IyGE/qnmr+k6mt6bhwBUTUMIgRACTfvw/IUQfdJQNR0hhJW+LEvIktTnnI9DJC2bTw9J/Btruct/hOqjb9LWVYGqBXAoXlISRlGQeTrxniyMZvnF7T0rqutxKAqFuZkf+9ov9p1/cfiMRwBzigOUH3qE1WXfpaPnELnppzEq7zKyUqfR1lXJ6h23sPvw44BkTJMYfI3+5LF/8eRr71qfWzu7+cEfnqaytoGObj9vbNxJWNUGvguzz+js8bOtogqAYFjl8VfX0NDcRpc/wI2//CujL7+NEZfdyv8+tIQuf8AYXT5i+SSgOxC0R4FPG/EZouuaEEKI93b/WLyx5XrR3n1ICCHEkaa14kDdMhEMdwohhGjrOiBe33yd2Lj3vj7XDQaqaqR1+nfvE+ln3yA0TRdCCPHmpnLBsIVie+Vh8at/LBOknCLe3b5XCCFEMBQWuq5bf0PhsBBCiO/98RlB9hyxdd8hEVZVwfjFYsnr68S6sgqRNu8a8eybG8STr70rkuZeI97cVC40TReBUEiEVU2EVU2oWu99qZomwqoqgmFVaJoujhxrEe7ZXxE3PfA3IYQQobAqwmrk7+DVR6zzmS2ChdCRJJm91U/R0XOYBZP+hCw72VP9d3Ye+jNOxUfZwYcpGXoNo/IuZ/6kh3lz6/VU1j7PyLxLreut9MCapzuUjz6QRfrgxadOYdXmXTS2tpOdlszmvQfxDsulZFguiV4PSX+9l4mjhgLgcvatJqfD+HzZ/BkkupwU5Q7BHwzjTk2iJxhi/Ih8mt5+3Dr/q2fOprWzG1mWcMvOAculyH3vwetxs3jOVCaPGmbmqXzke7T56AyaAIQ5vEsYjTPa8iEQSJJMINTKwfqXmVV6H7LsRNdV6ps34HGl4VS8BMMdHGlay8jcS1FkN9NG/4D399zL0KwzcTkSiJ4ZS3y8hh9BMss1ZfRwwoEgB2obyU5LZv3OCkYW5OB0KNQ1tbGxooqrz50LwK+WvMKSFWvRgHiPm+zUJJb+4jZUTac9FCbBG0dbVzeqpqHrOr44D39+8W2Wr99Kjz/I1y+YzxULZ/LPdzayt+oIIV1n7/5qrjpnDufPngzAy+u2smz1ZoakJrF47jSmFhdy1qzJzJlYDMDBuqO8vmEHlbUNjCnM46tnzMblctrrhJNk0NYAkmRYPCL/CnPuKsA0dUJd81oSvAUkxRdaPbpD8SCEji40JElGlp1IkmEFSk0oJs6dSUPzBiMt0bsiCKsaf37xLR5/bQ26abn5SDdsCqBkeC4en5ddVbUAbK2oYtb4UQBU1NTz6FOvEAqrHKht5I5f/JXUpASmjB7O++u3MTwnEwnYvPcgv3z4abr8ARRZRtcFsiwjhHGso6uHpo4ubnrgMYSANzeXc9d9j/Cv1Zt4d9d+Lr/rtwRDYcoP1nLBd37O29v28PdXVrNm+16EEFx7z0M88eoaADbtOcj3HnqKV98v4/of/p53tu1Bgo9krbI5MSc9AhgNT6KxpY3rf/lX2ju6+cv3r6d4aA5g9tdmo2vv3k+ybySRxbAkRYb13oeo6UF6pSNI9o2gtauSgiGLAMM86VBkfv30cr5//99AkgiGVG64YD6qpuFQPniqIJniTPDGMTI/m/IDtYRVlSNHW5g3eYxRKYqCkpyI2+WgoaUd2engke99naLcISx9ZyNDs9IBY1oSl56CQ5YJhsPGd4qCJMEj3/s6AE+tXMu3HnwCSTLyHjutlLInf8Hasn2c+rW76TAX0rLDwaZHf0Jqog+AkKqSlpZMos8LwOULTuHyBacAkHrWDTS1dVi1ZPPJOWkBaLqOQ1F47NU1vLJsFfi8XPj933DWKRNQNQ1JkpAkQTjsZGLxPhZNmw+mnV+SFHLTT6OpoxynQ0HTA2SlTEdCQjePG1Oj1uPy7ewJgC7A7SQYCn+iMk8fU8i+6np27K9GliSmjSkCQBcCXQgUSSasaeiyjKYbTU12KBxtNRqfphm+BEmW0IXRGUTm8vc+9i/++tJbNLV3kZmaBEAwHEYzR6qwqiEJQVjV6PIHcPniiHO7rDIK3TgmzHz31zbyq7+/xKZ9VXS2d+J2DryWsPl4nLQAInPqU8aOwJuVjj8Q5JbLzuSSedMRQpg9so4sOzhQ10pLZx1Dh/ReX5SzmNqm1bR07iHFN5oxBV8lul/zh44R5+q1oyuykd//XHUuEvDG5nJOnTAaIT6Ox9U470vjRvLerv2seL+M4XlDKBiSBhgNWZYldCEYkpKIJARV9cfITkumq63Taqi6EFFTPh10nURfHPuq6/nR/Y/yqzu/yYEjR3n+nfcBw1EmmwLRTKeZLBn5yP1m88Ish2Te75fveYiGoy1cd8F8yiqqLCeBvQY4OU56DaDIMgKYN7mETY/9jI2P/YxvLl5AelICGcmJpCTEk5KQQFJ8HLnp02hqL0cgkGUnQmi0dOy2PL9uZzKd/hpAMhbJQqWlcy+ZyZPM3CRLcMk+Lz+94TJ+f+s1PP/ORiOS4qPetJnG9JIiOnr8LFmxljkTiq20dV3gkGUCoTDFQ3MoKS7kjFt+Tu4FN6OFVU6dMBowGyhGJ6ALAULgVBTD4uPxcNuXz2bCyAKCYdVKNyJg3RwJZFlG03SroWuabjV+XWBN6Q4cOcr1Fy3kx1+7GF3XjxOMzSdjUKxAEsYDKxmWC+b/6dMbCxCQkTwZEBxuXEmidxjbD/yezp7DSMi4nUk0tZexesctJPtGMWnELTS2bkKR3aQnjQfTkmSlKASqpjOleDh/efltGlvayUhJNMIOpF5L0UCjQqShj8rPJtEbx66dFdx93UVRpRXIsoIvzsPGPQc5WNvAj79xGUMz05g2bgQlBcb6RpFlHA7FCmNyyAqKIhs9u0Oho8tPa0c3cW6nmS+4TBNqZHSUJQm3y0E4GMLtdFgjhK4LZKnXPOpQZBRJtkQmy3Yc42AwaGZQSZKM4C/EAA9HQqAjSw4mjvgO7+/5MSCj6UEcSpwZf6Mjyy4koLmjnPW77kDVQswY8yMkSTbXDFKf/CRJQpFlZo0bxT9XbeSmi07vJzwD3Zxq9F5rrANcTgdDs9LZtXU3U4sLLUuSPxDC39aBLEt09QTwH21m+fptpCTEs3LDNm689AxOnVBMZ0+ArrZOJElC1TTU1g5CYZW4JBeqP8DMG37EvoO1pKUZa4C2rh7aunsACITCqO2dhMIqpYX5hI61cvGdv0UPhjjz1Cl844L5dLZ1oumGN9rlUHhq5Vpeencz4ZZ2PuvlrzDjnhRZ7vMcvugMqiNMliVONCuNNOKMpAlMLPoOOw7+FiH0KAeXDAiE0FBkhab2Y5w67i7SEsce5wSLoCgyuhBcPm8Gdzz8NHsbmzjQ1k57IIDP7WJ0eiqj09N659n9BARw342X89UzZzMyP8s6ds6sSQRu/y9UTWNm6Uge/NHN7KmqQ9N1lry2ho5giFMnFDN38hjuuO4iNE0n0RvHt6+/hLyMVEYPzeHaK84mLcnHD//rIvYcPgLAlQu/RGVtAwClhXlcd/UFSLLEzNKR3HvH13lp1UZS4uMYOzwPRZY5b/4M8jJSAbj27NNY+uZ7nD1zItmpSWSmJPa5j2giU6qPE4Wq6XrUmq0vwlzrfJiF7URErv888pkHw0Uac2XtVhpb/0V7zx7CandUJceTmTyRvIxL2V/jpHhoKpkpyQNWYqRRH2ht486X30CJczEqI41kj5umHj+17Z3Eu5x8bcoEJmUPOU4ErZ3d6JqOL95DR3eAyOgV53Li9bgHLP8Zt/4CVdN563c/+DSr6XNDpM66/AH+8OwKLlxwCqPysz5yo+5f5587Pot4iwi6+e+xtnaxelulEEKIjp5aUde0ThxufF3UNa8XXf466/yO7m6x8v0yUd3YZFyv69Yxzfz/6kPVYvFTL4hnyveIQFgV7YGAqG5rt87/1+594qIl/xQv7t5nXReJpbnx/r8J18wvi7j51wrXnKtF3LxrhfO0q0XuBd8Sx1o7rDL/7ZVVIv7Ur4jEhV8TTLxI/OGfbwghhAiEwiKsamLl+2Xihp/8Uew+dEToui40XReqqglV1UQgFBKqqom/r1grpl7yXfHW5nIhhDgupkdVNeM6TbPuTdN0q84i34VVTWiaJnpr4niWr9sqKqrrj6uzAZ+JefwfK9aK3z77mvAHQ8cdC4RCYtF37xPkzBXX/uxPRnm1jx6P1NLZ3ZvmR77qs+Ez3RAjzMGm/OARpoweikCQEJdLQlxu/zNNZ5WXhVPHsnrbHnoCIUYXZPdaTySJiqYWfrN+I3fPncXknCzKGo7y43fWEtY0CpKTuHJ8CYvHjGL8kExuX/k2mb54Zubnopqe6bCqEer2M25EAck+L2FNJ6xqJPu8uF1Oq8xnzBjPEz/+FkJA/pA0ZowdgRDGvFwIwQ2/epSqd7fQGgrz7L3ftpx1ALow9gUcOdbK5g3b2FpRxfwpY4HeUA5hml0lSeqzhpHlvlM2IcQJwz8iTsA/LH2Db/3g/8gvKaLsyftI9sV/YG8dOfbnl97i3bfeY+6UEsYXFRj+DUkiEAxx+d2/5/Xlq1l02Rk8cPOVH6lXj6wXlq3byjfu+QOnzZzI3+++0Yhp+hyNCJ9hMJxhMqxubCIhzoMvLs7YACaJ3p1g5s4wKcrcKcsy86aMZUN5Jdsqqpg0apgxX5Xg4Y1b+fL4EibnZKELwdLd++gJh0mN81DZ3MJTO3YxNTebwtRkvjtzGo9s3s6UnCzLFCnLElIgyA2L53PzRYsGLLcsSeSkp3DxvBl97gWzxLIs883FC3hCVfnKolmA8XwjQo0EzimKjOKLxxPlwNJ03QofGehzJMRDCFMs/TbXKLJsNFTzD0BSvBdcTtISfTgUpc8GHUSvkCJliqzZEuO9OJJ8aFrvjFjXdVRNJ6SqzJwzned+8h2SfF5LNEKY6Q6wIBemU3Dj7gM07NrP64pCIBTG5XRYIS0Ro0l0GE3kWmGagSPP6dOaRn2GI4CEJMH+2qPMmWTY3K1b+pCbE0Iws3QkZfureXfHPk6dMJqK5hbaAwEuHDPK6pFUXccpK2i6IN7lsh6LLgSnDcvn2Z272Vhbx+yh+cb3umFz7+oJoguBFhVKEXkYzR1duBwOErweqhubEAIrFAKzId3xlfO45Yqz8EQae5QVrLmtg0RfPC6HYqbf2+tH8gqGwkiSdFzUqdxvROifdt/PxnlfOWMWs8aPIjstGY/LaXYyoPRJ5/j6VjUNVY8aYczyJXgVVjx4h3VepGc36ujDAxLvvHoxOSlJTCouJDE+zhKfLEnIyokMJmZMWdR3x1nWB4lPTQBCGPZ0IbCG7vKDNeRlppo900e/oYijafyIAipqG9hQVsERRWdYSjJORUE1e06nohg9r2T6CSK9YyQALjOdsoZjvQIwH4ZDVqwo1v47sc65/X7qm1oZW5jHyvfLcCkKC6aP44m7vkmyz4siSfzgz8/y3Evv8OyDdzCleDhCCMoP1nDHQ0t4f/cBkhJ9RoxPfJzVgzsdDpat3covnniRmqY2JASnTx/PL2/+MqmJPlRV4+qf/BGX00Hp8Dyee/s9tLDK1efOpWRYDo8uW8XBmgaGZqVzxzWLmTamEDBCJh584kXOnjudc2dNQhc6iiTzwqqNvLhqI21dPaQm+jjv1ClcOm8GkRheVTP8J5FnoigK63ZW8NLqzXT2+ElN9LFoxnjmTBpj+XlCoTBLV29iT9URQqpmCSOsqtx40ekMz86gKxBgdEE2RXmGNz8SKVxztJl1O/YRCIUpLcpnZF6WEfckBB3dfqrqjxkWMwFTxxQyLDvjU7EmDboAhDAaliKbw7IRDYc/GKKhpcMMW/j4NxIxZY7Ky6ItwcdzK1cxcniu6TU1zhmVlsqG6iPIkkRI08hNTECRjWmDQ5ZJjYvjcFu7laZqRlImxnuMHthxfHV0+YNU1zYSCIdZMLWUXYdqWf7yOzxUXMiPTOdZe6efA3sOcKj+mCkAuOmBx1m7aiMFJUXous72yipwOq37PtLUylX3PkznsVaGFuXjD4Z49LF/4XI6ePj2/yIYCrNq2x4aqo6ApuPNSqfHH2Dbg49DKAxOB25vHJvfL6O6qY0Nf74HRZE52trOHx95nqqWds6dNQlZllm+fjuX3vZL0HSIc0MgxN9feJ3f/fBGvn3JGX3uN9IprN6+l/k33Yve0QWSDELn5399gcd+/G2uPec0Y+1z/994YslyQGC6rcHlAkXm6rNOBWBH5WEWXnILV339Ev7xw5sA2FZRxaJb7qOppgE0DTSdU+ZOZ8Nf7iGkaky//odU7NhnPFhFITlvCBv+fA+jh+YMulVpUN2JRmyMEa/TGVDZXNXKm3uOUlbbzrbKGr40Zihup8Oa2w1EZP43YGHNaU5yko+po4bR5veboQigCcHFY0czIi2FnpBKgsvFtZPGWeUSQFcoRFzUHFzVdPB5eWjpG8y+8V7mfvunfOlrd/HDR18AejfOJ6cksv3x+3j9N9/j/puuRHE62Lz3oJWOJIPs9eBxGQI61t7JrqojpA/LYdVDd1H57IPcefVi6Oq2esmtew/RebSFGdNK2f2PX7Lmobvw5WXy1pZd6ELgcjrwuJxkD81h2V/u4fDS33LntYtRegJce/EiKv/5W7Y//nOyRhRQWdtAU3unVR5HajI+r8coG/Dims3IwTA3Xn0+Fc//H/d85yvIksSrG3ZE1YUGUu9c+7m33kNv7+TyixexdsmvuPWGyyAU5pm3jND05o4ulq3dijs9md/86GaWPfoT5s6djkMIHv7+9ZQWGqOsQ5FRUpOsTkqWJP66bBVNVUc475w5/PG+W/nmdRdx/fnzAGPz0fXnzeO6K8/hgR/eyBWXLKKttoHdVUeQiKwbBo9BGwE0M86lrs3Pfa/tY8PBZnxuB3EuhQ6/ypGmVq780kj+94zRJHudAyo5+rsTKT3yXWlWJquqatCFEbcDoAJDk5PYe6yZ0iG55CYmIEsSLnOuvedYM2eMHG6lpaoaKAp7DtcRDoZAkaGlgyGZhvMpsnAPhlXL011amIfmcdPc3tV775qOrgvrITe3ddLa1sH00pEMz84AwONygqr3WVtI/gCTRw/H63EzemgO+TmZ1B1rpccfxON2EgqrIEuc/aVJyJLE2OF5aIEghTmZjMgzHHfZGSmU7a/BHwyZZTYbcxTVjc3oDoVrzjqVkflZfPXM2fz4kec52toetaA1Ch9xOB6qP4qkKNx04UJmjRtFVmoSv12ynMYWYwTtCQTp9AcYmp3Bdy87E4D2rh5WrVhLc0dv3Qhh1I8SZdGqqKlHcru485oLmFFS1KesQghuv/Ic6/Nzb73Hs0uWD3rDjzAoAohMeVZXHOOb/9jK/OJMnvradHKS45Ak8Lkd7Krv4pev7WHuA6t58rppjM9L6tvgdcMU2BMIIklSn9DgaGRJQgBjM9MRCNZU1TAzP5cntpWx6Ug9Lf4AqXEe9jU1c/Oy15mWl81XJozlUGsbDZ1dzMrPsx66osjQ3cN9t17N4tOmomo6uq5bMfgSRoiDIhuhZ7JsLlQdDmv6BKYNRJKsEJBAKAxhlQRr0SfREwxBJE8ME6xwu9hRWcXtDy1BUWR6AsZeiGBYxeN2IoQgrGk0t3eRnuSjOxAEJAKhELouLCuRruvWxhhV00AXfRbLXYEAxLmJ93jQdYHL4cAd56HTH0TVdCMUXQiQZZwO47qungDC4yLJ50XTdTwuFy5vnBGGbj6vcFgl0RtnhL1jjh6KbIkEIKzpfcsjjJAQ4fWQmhBv7KIzOzHJDLPQdJ11O/ax93Adq7bvRXjdn5rl9KQFEGnEZbXtXPf4Zu6/ZDwXTc6l/EgHZ/9uLaomWFiSyc3zinjyumn8ec1BLv/L+7x+66nkJHkIaxqKbDSe7ZWHWfy/D+B0Onn+Z7cwceRQSxjRCLPCrps8noc3bmX5vv2UNR4l3um0olMBjnZ389zOPVQ2t9DY1c0V40vwuV2ENc1YMOs6qBpJPi9FuUOOv7koIiVQZNn80NsjqarW5wVYmqaBruOOmvP3R9U08LhYX1bB+ne3gixBnBtPvJdgOIyE1+hYFBmXQ4lKx/BWy7IUvY/og5+RbjRut8tpmBRlCSWq1zfO0Q0rtHmnqqaDouAx61SW+76qTFj/GgIXmO9IEgJF/uCQCV03ggXdLicO03BhVKmgoaWdK370EKvXbgFVgyQfuF2f2tsxTn4/AMbi9Lbnyrhl4UgumpxLWNO5+6Vd7G3oJM3n4sE3KqlrC/DI1ZO54bRCDjX18D/Pl/HMN2agyAqarrOj8jDffvBxDh+ug2CIf6xcZwhA6Mj0rdDIgvhLBXkc6ejiT5u2kexx41QUEAJNCBRJwuFw4JBlNtbWcXlpCecXjzxumoUkmT2/6LOjTJYl6wVZiiJbPXck7Lm/KKHXqhV5VNFn6MJoYM7oeJouP9++/lIunjfNjFyVUWSJ9KQEAqGw2TMqx4lI+YCYHKMR6n020UesNpFpiGFjN3plObrQkmTdl3UPJ+h5U3xe4jwu6o+1omkabpeTprZOZMDh6B19dFMUDrM8ujDWVYp5r9HldigKjyx7h9Ur1nLVV8/nunPn8MI7G/njY/+y/CmDPRCclAAi8/5V+5roCal8a24Rmi7QdEFLd4jEOCeKLJGZ6KapK2g13DvPHs2C36zlhfV7OFJ9gL2H6klNTeTS+TOoamhGqCqXzpsOGI1iICJpXVpaTG6ijye3l1PT3oEA4twuugJBJCSG+Lx8fcpMzhhZaDX+yK6s6IYR2QWmm44nWZZMM65A1wUhVUPXhTG90XScSm/VhU0TotLPJh5paAgIhfvuWpMkCcJhcjNTmDNxzHH3Fwyr1l6DaAdR5N7B6H0jI2Sk4eoD9JT9BaRqujHyRqUdWQSfaMTSzA3/DkUmpKokJ8Rz/Xnz+N2TL3Hdz/9CUd4QnlyxFl1RGBk1mvYvT2Svw/EY+Ta2dCA7HVy+4BTmTxnLivfKwOyEPg0GZQ3w1p6jfKkoDVmW0HSB2yET71YMr6LDEIr10AQkeJxMyE/h0bfLuXnucK48cw4ZyQkAXLVoFrKikGLOw6N7pP6PJnokmJqTzbb6RsrqGlm7q5LzJ5UwPCWJyTlZ+Fwua/cVUelomtE7JXjjcCjycU4dIUA1d3llpyUDEAiFIBTG7XZGndf3gSqyDLJMTzBkOrMgLSkBBNaDdDkcSLJMlzmnDoVVnE6HVTZhWqDccnQj1a37juSr62JAkUQ3GJdDAVUjFFLRdJ1AMIwaVnE6lQFHMusa3fClqJqGPxQ2yuhwGPsSAEk2PMlLnl9pmDO9HqbPnsxFc6dbDjNhevkjdRsRtS6M/Ryqphujo5BAMRx2uhB0+QOEwqrR4UiD3/NHGBQBNLQHmJBvxLxHhtaMBDchrZ0EyYGmC3weh3VcRiIjXmHY1ImcO3sk0OuqT0tK6D0vKkQgUpkRR0qEiAhcDoUZ+TlMykhn19odXGOaQPunFY0kSTjivWyrqLLOkWUJhyxz1syJ5uJXoruzm58+/iKXzJvOC+9sRA6r5Kan9ElLURRrmE5JiMedEM/eQ7XsPVyHpuls2n0QJd5jlSPJF4dwOtmxvxp/MITL6SCsqvgDIRLjvYbgo3r2SHllcxMO9HpH5agYfV3TrelUBJ/Xg+IPsK+mnuJhOeyqqkXp9pOZnGSdY7zLVLby83rcyP4ANY3NlAzL5XB9E1JXD6mJ8SiKTHVjE797ejkTJ4zmd9+9Gq/HRUq8l8I8o/dXVQ3kSCfTWx5ZlknwetC7/XT2BExhHN+7Z6Qk4nIaHnikTx6K/WEMigAcikRIE6YTzOjxv7tgJOv2NxPWddwOmVsWjLCmFwgIa+APBM04dKlPiAD07eUUWbYaqMTxbvGIZUgIQUDX0WSJkKriUBQrzqQv5nDb2oHa08Ov/vQsBEPGQlTTwengwBt/Y3hOBpIEbf4Adz/4OHf/YQnoOjgULpoz1Uqts8eP1tltlT1vSBrjivLZvG4bk/7rTgI9fgirEAoTNk2UU4sL8WWns+z19YyuPEy8x82xtg5SE3zsffoBJEmivdOPU+7tpUNhFb3HbzQuDGF39gQIh1VrS6Wq64iw2qd+po4u5NWX3+G23z/FM29uYH15JVowxFTTe2xYmwwTbWQT/viiAlYsX833//wcb24u541N5eiBIOOKDPt+xAwcDIXZuu8QPq8Hp0Oh/FAtC6aOxWNa8YQwd85FjUhDs9JZGwjysyde5MI509h9oAZdgnu/fglI4PC4eX3jTh5fvoZX12/HkZxgvZRgsDkpAUSKNGpIAjuPtBuxIbIxp55UkMyM4aks39nAV04pYOpQo8c0Y7rY29DBVTMKzICu3puLnoNG5rfL1m7ljoeeYkhaCn+76waGZ2ccv8EFo7LjPS6EaepTNR3JtJpEN4jI/687dw6zS0fgcDrN+bqOqho269QEL2FzCM4fksbv77uNR5evQlc1Ll04kwtOnWotkC88bSrtR1usV5o4HQpL7rmZXz35Mu+XVbBw1kTGFxXw96VvMHSIEUc0NCudJffczAN/X8b++mO0d/WQnpzA7PHGfmOvx8U5X5pIZ4/fWiyWFuYxunSUNV10ORRmlhojaMQXkpmSSGJqsvXWCE3XuemihWwor+TNjWUc3H8Y2eth/qJZfOeSM6x6TE2IR1NVa3S58aKFvLFpJ9u272Xbezsgzs3YKWO55bIzEUKQn5lGTlY6e8or+e6mnZgLJ3AoXPPlc3j8rm+adSGjdXbjDxprICEE1583j6Vvvc8zL7zOM8+tAH+A0xcvACA7PQU1EOT+h57Gm51OapKP1kO1WG8LH+S50EltiIlUXuXRLi58eD2rbp9Lus/Fs5tqeK28kS3VrfSENDJ8LmYVpXP+xGzmjMpgd10Hl//lfd65/TTSfe4B44IiaVfVH2PcV79HV0cX6Bozp45jzR/uPi5CMDJN2lddz3m338//3Xo1Z8+c+ElvDTCcPUWX3YYiS9S++NBJpdWf6HAQfzCEBFav+YHXYVhWou38gWAIt6vX5Hq0rQNFlklL9PXJp7Kmnm5/EK/HzaiC7D7lONbaQe2xFkoL8y0LUiissmn3ATp7/MTHeZheUoTb5bSuOVR/jPID1XQHQoRVjdpjLfz0b0vJyUxl75IHUBSZLn+QV9duoSA7k1NKR1id2q6qI6zZupvuQIjxRflMHzuCJJ+Xts5u/vSvN9F1nW8sXog/GGLFms2cddpU8oekDXo80EnvCIs01Fue2c7RziBZSR6eWH8Yr0vB63IgyxDWBD0hFSHg9tNH8fa+o8wakc6dZxdblqT+REyS9z35Ej/49RMUjspnxa+/wS+eXMmlp5/OmTPG9YlMBNi5v5qHlr7B9efN45m33mNYVjoZyQlccNpUKzIyuu4i2wD7I4TRi3f5A4y8/L+Jc7so/8cv8Tgdps26r8VnoL3QuhAI3bDj67owXg+JhBRlT+8f/myk1fvqlP4P+5M+/Ii16zg7/gekd6K8PqwMORd8iziXk4pnfn1Cy82nEdT2SRk0P8DPLyzl4j+9x7KyegrT481VvmG7cTsk4l1uNCG46+VdXDoljzvOHG2I5wRWiMiiaX15JZIuGJmbxsiCYhZM3s+2iirOnDHOsNObIvj5ky9x10NLSM9I4f6br+TS+dM55ao7QNf59rUX8rtbr7YiIyP0Dy2OEC2Klo4u4twu0xkkIw3w8AbaC214RaUTHo/OvzcMQeojov75SOZap39KAwkl+vro171EhCjLUp/eIBKDFck/Eh4RMeNGHH3R+YRVjRfeeZ/G1g4CoTB7D9dRX9PA7Bnjrf3akiShabplYIikbXiyjWlNpDyRPCMRsxGnZmTE+zREMwgvxgKERLzbwfM3nML3lu7kpe11SLKM26Ggqiq6gJCq43LI3LZwJD8+v8To9cXAUzpBxA4PtUdbEPEeNu2r5c3317HkzW1MHTshKn8jhaWrNyFUlWOH69i454AxJzadMJGN6B/9noy84z1u7rpmMUdbO6IWcYP/ED7Ogx3ozIGEMhAf/NKC430AkiT120dgEBlJJQlu+/1TNOw+AB43KDJJacncesVZ5nnG7GCgPQOyLB3n4IzkGW3xkQD5U7IAwSBuio+eXqytbOLR1fvYVddOSlIScU6J0pwkLpiYw7RhxmJ44J7M3EIY9TCmf/1uNu85iMvlRNU0tPZuHvnpd/j6eXOtVy8qssxrG3bw3w8+xrgxRTz6/euJc7n4yRMvsmf/Ye795hXWdsrP9QbtLyCVNQ3UNDYhyYZnd0ReFjn9TMSfZwb1rRDCjER0OhQeW/YWyQkJXDBnOrLU29wjw+KHDeNh1Ujnynv+wNMvv4MnOQFFlgn4A6z83Q9YMGXscWuAgRbTJ4umGSEMJ5ou2RzPF6mjGdSnagyLEmFNp+xQA2OG5yFLvb6BaFt+NEbDlQirGuu27aGzJ2BZIhZOLcUbH0eyz4s/GMLpdlE6PM8ofD+TqSRhOcvAfHmtpg8YHtA3f4EwF8T9A8RkWerT+PWohbOu68f9tfYLC2F9/rA+5oPOiaSh91uwD5R3/3z75zFQ+T7s+InS6y2HsPZNaLr+hWr88CnsCOud7wmKcof0em5PUCeRiu3oCXDBHb9m1bptjC0u5JUH/5ehQ9K57tw5XDhnKqqmUdPYQltXN0PMty1HjxiRNUP0dx81fqT/2xh60xxo7ip/4PHIPQ00p/7A/E9A9KL0w8oWOW+g9Pp//3E+f3D5Tryu+CIwqL8QA9DW2cP//OEpdlfVEQiF8SnycQ0zGs3ciP2751ayavVmknMz2bX7ALf/fgkv/OwWjhxrQZYkstNTyEhO/MAyfNLHcOTIEfZXVqKqKnn5+YwePRq/38+2bdvwxcczfoKx6FZVle3btyOEoKSkhL179xI2g9wkSUJVVYqLi0lLS6O+vp7KykpCoRC5ubkUFxcfVwcRoVRVVdHW1sbEiRP7fB8KBtm9ezfHmprwxcczpqSE5ORk/H4/O3fuNEYtM29NVRk/YQLHjh6lpraWzMxMiouLrbQOHjjAkbo60tLSKCkpoby8nK7OTiZOmoTH46H68GGqDh9mbEkJaenp9PT0sHv3blpbWkhKSmLs2LHE+3yfsIY/vwzijjAjnPX+p1/h0SXLwe3i/557jbuvvfADf7gi4gN4Zf02ZJ+XUFjFlZLIqxu2097Vwz2P/pO/v/Q2pSVFjMjJ5Edfu4Qxw05+b2ikYezfv5+VK1bgdDpxOp2Ul5fT0dHBlClT2LtnD6FQiMKiInw+H62traxds4a8/HxKSkrYsnkz4XAYh8OBJEkEAgGGFhRQFwzyr6VLcTgcuN1udpWX09LczKzZswe0gW/atInEBDMGynwfj6qqvPbaa1RVVZGcnEx3dzf7Kiq45JJLEEKwedMmy0ISEcuIkSM5dOgQW7duJSMjg8LCQlwuF7qus2nTJmpraxk2fDglJSXs3r2bxoYGxpSU4PF4qKmpYd3ateTm5pKUnMzLL73E0aNHSU5OZt++fRw8eJALFi8mLi7uE9f555FBnAIZDzU7LQUUI/owEkF5IiKNIRgO09zeiS7LCPPV5D2d3byzdTcH644R1HS2Vhxmy7Y9/PeV51rXDsaKd8/u3UiSxMWXXEJCQgJLnnqKrVu2MGXKFEaPHs2WLVtoamrC5/PR2NgIwMiRI4mLi8PhcJCSksI55xpl0nUdr9fLG2+8ga7rXLB4Menp6Tz7zDPs2LGDCRMn4vP5+kyRAoEA7W1tTJs2zbovWZY5evQoh6uqKCkp4fRFi9i+bRsrV6xg3759jBs3DofDQUZGBmeceWafvJEkEhMTCQaDNNTXUzB0KM3NzXR1dZGQkIDLZXib3W43cXFxlhidTidxcXHEeTzU19dTV1fHjBkzmDV7NuvXrePdd9/lwIEDlJaW9nHWfdEZNAE4zKnOty4+nYzkBBRFNl+7wQdE8kUcRbJxTmShJYGk69QcbbG2EspA3vA8xhZGFsCD8wAUc2dY07FjpKWlcdHFF9PRYfwCTE5ODhs3bqSxoYFhw4bRUF+Poijk5ORYC09JkoyGF52mGbna1NREVlYWFyxeTHt7O2638b7RiMNHkiTq6uoAyMrKso5F0pBkmZ6eHrq7u5k4aRKZmZnE+3yEQiFLKP3zthbjuk51TQ0FQ4dSW1NDKBTC4XAg+i2WI0Q+G7vQjFGls6uLQCDAKTNnMnTYMGuU+rx4cQeDQV0ESwCSxBULZ/b97kTnm1Ybp6IwJDWJfYdqURTZivPJSU/mxgsXsH3XfnTgzmsW43W7jjN/ngwTJ02ivr6elStXsmvXLiZPmcKwYcMAGJKVZfT8R4+i67oxJUhJIS09nWAwiMPhoLOzk6VLlxIOh8lIT2f+ggWMnzCB2tpa3nrzTfbu2cOkyZMpKjp+87ckSRyuqiItLQ2Px2M1aiEEGZmZlJaWsmPHDp55+mlGFxczbdo03G43bW1tOJxOWltbrbyzs7I4bc4chK7jcDjweDwcqa0FIaiuqSE1NZVQKNSn0fdHliTCoRBDhw1j9OjR7N29m4b6esaUlDBt2rQTLsi/yHwq45iq6R/51wsjbu+JI4ci/EG6/EE6WjvRwio56SlcfeaplD/7a3Y98wDXnz/PCq89WSIPMScnhyu+/GUmTppEc3MzL734Ips2bgTA6/UyZMgQWltaaGxspKOjg5zcXGRZRo9684LT4TD+mhGYmZmZXH7FFUydOpX29naWvfwy69atA6LCvc2GfuTIEQoKCvoci4REzJs/n3PPO4+UlBS2bN7Ms888Q2dnJ06nE2GOPpG8lagf3pBlmYKCAtrb26muqaGluZm8/Hwrzw+oFDM8Rebsc87hjLPOIi4ujg3r1vHC88/T09PTp5z/CXwqb4b7OL/fG2mIi6aP4/GX3mbCmCIykhNI8nkZOzwPXQhrw/pg25iFELQ0N+NwODjttNMYN24cr736Ktu3b6d4zBgSEhLIy8ujrq6OXeXl6JpGfn5+pOBomkZSUhLnnX9+n3Sbm5uRZZlZs2dTOm4cK1esYGdZGaWlpSQlJVlz6NbWVrq7u8k3BRDds/r9fjo6Ohg+fDhFRUVs3bKFNWvWsGf3biZMnIiqqmRkZByXtyzLxoiQk8OBAwd47733EEKQk5NDZUWFuYurt+6jp2OR6/09PbR3dFBcXMyokSN577332LhxI5UVFUyYOPFzFcx2snymb4ceiEhvvmj6OCr++Vvrhx+iGWgn2GCx8vXX6e7q4sqrriIlJYXk5GTa2toIBYNgCmDLli0cPnwYb3w82dlGGPEH2fnffustmpuauOLKK0lOTiYlNZXGxkYCfj9JSUlWD1pTU4PH4yE9Pd1KMyKO6upqXlm2jFNmzmTWrFnkFxSgKArdPT0fGMUpyTKappGamkpaejrVhw+TnZ1NWloamqZZdajIMqqqEgqFkCQJv9+PEIL4+HgOHTrE8uXLWXj66UyaNIncvDykTZvo7u4e7Or/t/NvF0AEh6KQmZJIS0c32yureGfjTs49bar1KvITRY1+UiK92OhRo1izZg3LX3mFhIQEDhw4QFZ2NknJyQghSEtPJyEhgYaGBgoLC0kwF4LGGyM0WlpaeOGFF4wXaAWDzF+wwBpJVrz2GsnJyRw4cID09HRSUo0XbkXm0jXV1eTk5FhTk+ho0Pz8fDIyMijbsYPOjg5aW1vRdZ2C/Hxj876uc+zYMSvvUCjE6YsWIZuN2eVykZeby55duxgyZAhxcXH4/X5CIeMFWsOGD2f//v28vnIlSUlJVFVVGWVMScHjdpOcnMymjRtpbGzkaGMjiqKQZ45+/ym9P3xOBKBpOrIi89xb7/HtX/yV1lAIte4Yrf4gM8aOGPDVKCdLZOifNHkyisNBZUUFLS0tjBkzhmnTp+NwOIwwXEWheMwYFEVhdHGxdb2iKOQXFKCGw8Z7gCKhvJpG8ZgxhMJhKvbto7m5mREjRjBt+nRc5ub8iPmzurqaBQsXAn1joYQQeL1ezjnnHDZv3kxTUxMut5uFp59O0YgRdHd3M3ToUPOFWL15S5JEWloaw4YNQ1EUhhcWUjhiBIVFRda6IC3N+CnY0tJSdE2joqKC1tZWCgsLmTptmuEPSUri3PPOY+vWrTSbJuCZM2dSUFDwHzX9gUEOhvukRKw6r2/cyRk33UtKRio9XT3MnjyGN3/7gy9cfMlHoaOjg7KyMqZMmfK5di79pzX4/nwuRgBZMqYAs8ePorAwn4MHayAQJNFrNIzBcnqdiP69L/Qd5qP7iBN93//4h6WZmJjI7NmzP7RcH5bmR8n7ROX4sGMnOvc/ic/FCAC9G+DXlVXw/YefJjM1iftuuoIRuVnG7/b+B1b+f5JH9YvK50YAMPAmGRubT5PPxRQogoS5wVzC2t3yn9jz23x++FyNADY2nzX2BNQmprEFYBPT2AKwiWlsAdjENLYAbGIaWwA2MY0tAJuYxhaATUxjC8AmprEFYBPT2AKwiWlsAdjENLYAbGIaWwA2MY0tAJuYxhaATUxjC8AmprEFYBPT2AKwiWlsAdjENLYAbGIaWwA2MY0tAJuYxhaATUxjC8AmprEFYBPT2AKwiWlsAdjENLYAbGIaWwA2MY0tAJuYxhaATUxjC8AmprEFYBPT2AKwiWlsAdjENLYAbGIaWwA2MY0tAJuYxhaATUxjC8AmprEFYBPT2AKwiWlsAdjENLYAbGIaWwA2MY0tAJuYxhaATUxjC8AmprEFYBPT2AKwiWlsAdjENLYAbGIaWwA2MY0tAJuYxhaATUxjC8AmprEFYBPT2AKwiWlsAdjENLYAbGIaWwA2MY0tAJuYxhaATUxjC8AmprEFYBPT/D9CgxFOdXr0DAAAAABJRU5ErkJggg==" alt="Ícone do app"></div>
     <div><h1>Acidentes com Animais — São Luís/MA</h1><p>Antirrábica · Animais Peçonhentos · SVES · COVEP São Luís</p></div>
-    <button class="bh" id="bhr" onclick="reiniciar()">↩ Reiniciar</button>
+    <button class="bh" id="bhr" onclick="reiniciarTudo()">↩ Reiniciar</button>
   </div>
 </header>
 <button class="menu-toggle" type="button" onclick="toggleMenu()" aria-label="Abrir menu de navegação">☰ Menu</button>
@@ -186,10 +204,10 @@ section.ativa{display:block}
     <li><a href="#" class="ativo" onclick="sec('inicio-app',this)">Início</a></li>
     <li><a href="#" onclick="sec('algoritmo',this)">Algoritmo Antirrábica</a></li>
     <li><a href="#" onclick="sec('peconhentos',this)">Algoritmo Peçonhentos</a></li>
-    <li><a href="#" onclick="sec('esquemas',this)">Esquemas</a></li>
+    <li><a href="#" onclick="sec('esquemas',this)">Esquemas Antirrábicos</a></li>
     <li><a href="#" onclick="sec('unidades',this)">Onde Vacinar</a></li>
     <li><a href="#" onclick="sec('soroterapia',this)">Soroterapia</a></li>
-    <li><a href="#" onclick="sec('sobre-soro',this)">Soro/IGHAR</a></li>
+    <li><a href="#" onclick="sec('sobre-soro',this)">Soros</a></li>
     <li><a href="#" onclick="sec('raiva-info',this)">Sobre a Raiva</a></li>
     <li><a href="#" onclick="sec('orientacoes',this)">Orientações</a></li>
     <li><a href="#" onclick="sec('elaboracao',this)">Sobre o App</a></li>
@@ -256,8 +274,12 @@ section.ativa{display:block}
   </div>
 </section>
 
-<!-- ESQUEMAS -->
+<!-- ESQUEMAS ANTIRRÁBICOS -->
 <section id="esquemas">
+  <div class="card" style="border-left:3px solid var(--v)">
+    <div class="ct">📅 Esquemas antirrábicos</div>
+    <p style="font-size:13.5px;color:var(--c);line-height:1.5">Esta página apresenta exclusivamente os esquemas de vacinação e profilaxia antirrábica humana, incluindo pós-exposição, pré-exposição e reexposição.</p>
+  </div>
   <div class="legenda-esquema">
     <strong>Legenda dos dias do esquema vacinal:</strong><br>
     <ul>
@@ -272,7 +294,7 @@ section.ativa{display:block}
   </div>
   
   <div class="card">
-    <div class="ct">📅 Pós-exposição — intramuscular (IM)</div>
+    <div class="ct">📅 Profilaxia antirrábica pós-exposição — intramuscular (IM)</div>
     <table class="tb">
       <tr><th>Tipo</th><th>Dias</th><th>Soro/IGHAR?</th></tr>
       <tr><td>Exposição leve</td><td>D0, D3, D7, D14</td><td><span class="badge bv">Não indicado</span></td></tr>
@@ -282,7 +304,7 @@ section.ativa{display:block}
     </table>
   </div>
   <div class="card">
-    <div class="ct">💉 Pós-exposição — intradérmica (ID)</div>
+    <div class="ct">💉 Profilaxia antirrábica pós-exposição — intradérmica (ID)</div>
     <p style="font-size:13px;color:var(--c);margin-bottom:.75rem">Somente em unidades com ≥ 2 pacientes/dia e equipe habilitada. Frasco usar em até 6–8h após abertura.</p>
     <table class="tb">
       <tr><th>Dia</th><th>Sítios</th><th>Volume/sítio</th></tr>
@@ -294,7 +316,7 @@ section.ativa{display:block}
     <p style="font-size:12px;color:var(--c);margin-top:8px">Não indicado para imunocomprometidos nem usuários de cloroquina.</p>
   </div>
   <div class="card">
-    <div class="ct">🛡️ Pré-exposição (PrEP)</div>
+    <div class="ct">🛡️ Profilaxia antirrábica pré-exposição (PrEP)</div>
     <table class="tb">
       <tr><th>Via</th><th>Esquema</th><th>Volume</th></tr>
       <tr><td>IM</td><td>D0 e D7</td><td>0,5 mL/dose</td></tr>
@@ -303,7 +325,7 @@ section.ativa{display:block}
     <p style="font-size:12px;color:var(--c);margin-top:8px">Não requer reforço após 2 doses. Para populações da Amazônia Legal (NT 160/2024): ampliar gradualmente até toda a população ≥ 1 ano até 2027.</p>
   </div>
   <div class="card">
-    <div class="ct">🔄 Reexposição — resumo</div>
+    <div class="ct">🔄 Profilaxia antirrábica em reexposição — resumo</div>
     <table class="tb">
       <tr><th>Esquema anterior</th><th>Até 90 dias</th><th>Após 90 dias</th></tr>
       <tr><td>Completo</td><td><span class="badge bv">Não realizar</span></td><td><span class="badge ba">D0 e D3</span></td></tr>
@@ -672,49 +694,251 @@ section.ativa{display:block}
 
 <!-- SORO/IGHAR -->
 <section id="sobre-soro">
-  <div class="card" style="border-left:3px solid var(--vm2)">
-    <div class="ct">💉 VINRAB 1000 UI — Soro antirrábico equino (NT 35/2026)</div>
-    <p style="font-size:13.5px;line-height:1.55;margin-bottom:.75rem">Soro <strong>VINRAB 1000 UI</strong> (Vins Bioproducts Limited), incorporado à rede SUS via Fundo Rotatório OPAS. Frasco de vidro 5 mL, via intramuscular.</p>
-    <table class="tb">
-      <tr><th>Característica</th><th>Detalhe</th></tr>
-      <tr><td>Fabricante</td><td>Vins Bioproducts Limited</td></tr>
-      <tr><td>Apresentação</td><td>Frasco de vidro — 5 mL</td></tr>
-      <tr><td>Via</td><td>Intramuscular</td></tr>
-      <tr><td>Armazenamento</td><td>2°C a 8°C — NÃO CONGELAR</td></tr>
-      <tr><td>Dose SAR equino</td><td>40 UI/kg de peso corporal</td></tr>
-      <tr><td>Dose IGHAR humana</td><td>20 UI/kg de peso corporal</td></tr>
-      <tr><td>Uso após abertura</td><td>Imediato — descartar restos</td></tr>
-    </table>
+  <div class="card" style="border-left:3px solid var(--v)">
+    <div class="ct">💉 Soros — antirrábicos e antivenenos</div>
+    <p style="font-size:13.5px;color:var(--c);line-height:1.55">
+      Esta página apresenta informações gerais sobre os soros utilizados na profilaxia antirrábica humana e nos acidentes por animais peçonhentos.
+      A indicação, dose, via e administração devem seguir avaliação clínica, protocolo vigente, disponibilidade na rede e orientação da unidade de referência.
+    </p>
   </div>
+
+  <div class="soro-note">
+    <strong>Como usar esta página:</strong> toque ou clique no nome do soro para expandir as informações. As siglas aparecem sempre após o nome completo do soro.
+  </div>
+
   <div class="card">
-    <div class="ct">📌 Quando indicar o soro?</div>
+    <div class="ct">🐶 Soros antirrábicos</div>
+    <div class="soro-accordion">
+
+      <div class="soro-item">
+        <button class="soro-btn" type="button" onclick="toggleSoro(this)">
+          <div>
+            <div class="soro-title">🐎 Soro antirrábico equino (SAR) — VINRAB 1000 UI</div>
+            <div class="soro-sub">Profilaxia pós-exposição da raiva humana — situações com indicação de soro</div>
+          </div>
+          <span class="soro-chevron">⌄</span>
+        </button>
+        <div class="soro-content">
+          <p><strong>Indicação geral:</strong> profilaxia pós-exposição em situações graves, conforme avaliação do tipo de exposição, animal envolvido, condição do animal e situação vacinal da pessoa.</p>
+          <p style="margin-top:.5rem">Soro <strong>VINRAB 1000 UI</strong> (Vins Bioproducts Limited), incorporado à rede SUS via Fundo Rotatório OPAS.</p>
+
+          <table class="tb" style="margin-top:.75rem">
+            <tr><th>Característica</th><th>Detalhe</th></tr>
+            <tr><td>Fabricante</td><td>Vins Bioproducts Limited</td></tr>
+            <tr><td>Apresentação</td><td>Frasco de vidro — 5 mL</td></tr>
+            <tr><td>Via</td><td>Infiltração local na ferida, quando possível; volume restante por via intramuscular</td></tr>
+            <tr><td>Armazenamento</td><td>2°C a 8°C — não congelar</td></tr>
+            <tr><td>Dose do SAR equino</td><td>40 UI/kg de peso corporal</td></tr>
+            <tr><td>Uso após abertura</td><td>Uso imediato — descartar sobras</td></tr>
+          </table>
+
+          <div class="soro-alert"><strong>Atenção:</strong> priorizar a infiltração do máximo possível do soro ao redor e dentro da lesão. O volume restante deve ser aplicado por via intramuscular, em local diferente da vacina.</div>
+        </div>
+      </div>
+
+      <div class="soro-item">
+        <button class="soro-btn" type="button" onclick="toggleSoro(this)">
+          <div>
+            <div class="soro-title">🧬 Imunoglobulina humana antirrábica (IGHAR)</div>
+            <div class="soro-sub">Alternativa ao soro heterólogo, conforme disponibilidade e indicação clínica</div>
+          </div>
+          <span class="soro-chevron">⌄</span>
+        </button>
+        <div class="soro-content">
+          <p><strong>Indicação geral:</strong> profilaxia pós-exposição da raiva humana nas situações em que há indicação de imunização passiva, conforme avaliação clínica e disponibilidade.</p>
+
+          <table class="tb" style="margin-top:.75rem">
+            <tr><th>Característica</th><th>Detalhe</th></tr>
+            <tr><td>Origem</td><td>Humana</td></tr>
+            <tr><td>Via</td><td>Infiltração local na ferida, quando possível; volume restante por via intramuscular</td></tr>
+            <tr><td>Armazenamento</td><td>2°C a 8°C — não congelar</td></tr>
+            <tr><td>Dose da IGHAR</td><td>20 UI/kg de peso corporal</td></tr>
+            <tr><td>Uso após abertura</td><td>Uso imediato</td></tr>
+          </table>
+
+          <div class="soro-alert"><strong>Atenção:</strong> nunca aplicar soro/imunoglobulina no mesmo local anatômico da vacina antirrábica. Não misturar vacina e soro na mesma seringa.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ct">🐍 Soros antivenenos</div>
+    <div class="soro-alert"><strong>Regra geral:</strong> nos acidentes por animais peçonhentos, a dose do soro antiveneno <strong>não é calculada pelo peso da pessoa</strong>. A dose é definida pela gravidade do acidente, tipo de animal e quantidade de veneno a neutralizar.</div>
+
+    <div class="soro-accordion">
+
+      <div class="soro-item">
+        <button class="soro-btn" type="button" onclick="toggleSoro(this)">
+          <div>
+            <div class="soro-title">🐍 Soro antibotrópico pentavalente (SABR)</div>
+            <div class="soro-sub">Acidentes por jararacas, urutus, caiçacas e outras Bothrops</div>
+          </div>
+          <span class="soro-chevron">⌄</span>
+        </button>
+        <div class="soro-content">
+          <p><strong>Indicação principal:</strong> acidentes botrópicos, geralmente relacionados a serpentes do gênero <em>Bothrops</em>.</p>
+          <div class="soro-grid">
+            <div class="soro-mini"><strong>Quadro leve:</strong><br>3 frascos-ampolas</div>
+            <div class="soro-mini"><strong>Quadro moderado:</strong><br>6 frascos-ampolas</div>
+            <div class="soro-mini"><strong>Quadro grave:</strong><br>12 frascos-ampolas</div>
+          </div>
+          <p><strong>Observações:</strong> considerar dor, edema por segmentos, sangramentos, alterações de coagulação, hipotensão/choque e alteração renal.</p>
+        </div>
+      </div>
+
+      <div class="soro-item">
+        <button class="soro-btn" type="button" onclick="toggleSoro(this)">
+          <div>
+            <div class="soro-title">🐍 Soro antibotrópico-laquético (SABL)</div>
+            <div class="soro-sub">Acidentes laquéticos e alternativa em algumas situações de acidente botrópico</div>
+          </div>
+          <span class="soro-chevron">⌄</span>
+        </button>
+        <div class="soro-content">
+          <p><strong>Indicação principal:</strong> acidentes por surucucu (<em>Lachesis</em>) e, conforme disponibilidade e avaliação, alternativa em acidentes botrópicos.</p>
+          <div class="soro-grid">
+            <div class="soro-mini"><strong>Laquético moderado:</strong><br>10 frascos-ampolas</div>
+            <div class="soro-mini"><strong>Laquético grave:</strong><br>20 frascos-ampolas</div>
+          </div>
+          <p><strong>Observações:</strong> acidentes laquéticos podem apresentar quadro local intenso, sangramentos e manifestações vagais.</p>
+        </div>
+      </div>
+
+      <div class="soro-item">
+        <button class="soro-btn" type="button" onclick="toggleSoro(this)">
+          <div>
+            <div class="soro-title">🐍 Soro antibotrópico-crotálico (SABC)</div>
+            <div class="soro-sub">Alternativa em acidentes botrópicos ou crotálicos, conforme disponibilidade e avaliação</div>
+          </div>
+          <span class="soro-chevron">⌄</span>
+        </button>
+        <div class="soro-content">
+          <p><strong>Indicação geral:</strong> pode ser utilizado em situações específicas de acidentes botrópicos ou crotálicos, conforme avaliação clínica, disponibilidade e orientação da referência.</p>
+          <p><strong>Observações:</strong> a dose deve seguir a classificação clínica do acidente predominante: botrópico ou crotálico.</p>
+        </div>
+      </div>
+
+      <div class="soro-item">
+        <button class="soro-btn" type="button" onclick="toggleSoro(this)">
+          <div>
+            <div class="soro-title">🐍 Soro anticrotálico (SAC)</div>
+            <div class="soro-sub">Acidentes por cascavel</div>
+          </div>
+          <span class="soro-chevron">⌄</span>
+        </button>
+        <div class="soro-content">
+          <p><strong>Indicação principal:</strong> acidentes crotálicos, geralmente relacionados a cascavéis (<em>Crotalus</em>).</p>
+          <div class="soro-grid">
+            <div class="soro-mini"><strong>Quadro leve:</strong><br>5 frascos-ampolas</div>
+            <div class="soro-mini"><strong>Quadro moderado:</strong><br>10 frascos-ampolas</div>
+            <div class="soro-mini"><strong>Quadro grave:</strong><br>20 frascos-ampolas</div>
+          </div>
+          <p><strong>Observações:</strong> avaliar sinais neuroparalíticos, dor muscular, urina escura, redução da urina, alteração renal e comprometimento respiratório.</p>
+        </div>
+      </div>
+
+      <div class="soro-item">
+        <button class="soro-btn" type="button" onclick="toggleSoro(this)">
+          <div>
+            <div class="soro-title">🐍 Soro antielapídico bivalente (SAEl)</div>
+            <div class="soro-sub">Acidentes por coral verdadeira</div>
+          </div>
+          <span class="soro-chevron">⌄</span>
+        </button>
+        <div class="soro-content">
+          <p><strong>Indicação principal:</strong> acidentes elapídicos, geralmente relacionados a corais verdadeiras (<em>Micrurus</em>).</p>
+          <div class="soro-grid">
+            <div class="soro-mini"><strong>Quadro leve:</strong><br>observação rigorosa, conforme avaliação</div>
+            <div class="soro-mini"><strong>Quadro moderado:</strong><br>5 frascos-ampolas</div>
+            <div class="soro-mini"><strong>Quadro grave:</strong><br>10 frascos-ampolas</div>
+          </div>
+          <p><strong>Observações:</strong> atenção para ptose palpebral, fraqueza, dificuldade para engolir, salivação e respiração superficial.</p>
+        </div>
+      </div>
+
+      <div class="soro-item">
+        <button class="soro-btn" type="button" onclick="toggleSoro(this)">
+          <div>
+            <div class="soro-title">🦂 Soro antiescorpiônico (SAEsc)</div>
+            <div class="soro-sub">Acidentes escorpiônicos moderados e graves</div>
+          </div>
+          <span class="soro-chevron">⌄</span>
+        </button>
+        <div class="soro-content">
+          <p><strong>Indicação principal:</strong> acidentes por escorpiões com manifestações sistêmicas moderadas ou graves.</p>
+          <div class="soro-grid">
+            <div class="soro-mini"><strong>Quadro leve:</strong><br>sem indicação de soro</div>
+            <div class="soro-mini"><strong>Quadro moderado:</strong><br>3 frascos-ampolas</div>
+            <div class="soro-mini"><strong>Quadro grave:</strong><br>6 frascos-ampolas</div>
+          </div>
+          <p><strong>Observações:</strong> crianças, especialmente menores de 10 anos, apresentam maior risco de gravidade.</p>
+        </div>
+      </div>
+
+      <div class="soro-item">
+        <button class="soro-btn" type="button" onclick="toggleSoro(this)">
+          <div>
+            <div class="soro-title">🕷️ Soro antiaracnídico (SAA)</div>
+            <div class="soro-sub">Acidentes por aranhas de importância médica e alternativa para escorpionismo conforme indicação</div>
+          </div>
+          <span class="soro-chevron">⌄</span>
+        </button>
+        <div class="soro-content">
+          <p><strong>Indicação geral:</strong> acidentes por aranhas de importância médica, como <em>Loxosceles</em> (aranha-marrom) e <em>Phoneutria</em> (armadeira), conforme gravidade. Também pode ser alternativa para escorpionismo em situações específicas, conforme protocolo e disponibilidade.</p>
+          <div class="soro-grid">
+            <div class="soro-mini"><strong>Armadeira moderado:</strong><br>2 a 4 frascos-ampolas</div>
+            <div class="soro-mini"><strong>Armadeira grave:</strong><br>5 a 10 frascos-ampolas</div>
+            <div class="soro-mini"><strong>Aranha-marrom moderado:</strong><br>5 frascos-ampolas</div>
+            <div class="soro-mini"><strong>Aranha-marrom grave:</strong><br>10 frascos-ampolas</div>
+          </div>
+          <p><strong>Observações:</strong> avaliar dor intensa, sintomas sistêmicos, necrose, hemólise, urina escura e piora clínica.</p>
+        </div>
+      </div>
+
+      <div class="soro-item">
+        <button class="soro-btn" type="button" onclick="toggleSoro(this)">
+          <div>
+            <div class="soro-title">🐛 Soro antilonômico (SALon)</div>
+            <div class="soro-sub">Acidentes por lagartas do gênero Lonomia</div>
+          </div>
+          <span class="soro-chevron">⌄</span>
+        </button>
+        <div class="soro-content">
+          <p><strong>Indicação principal:</strong> acidentes por <em>Lonomia</em>, especialmente quando há sangramentos, alteração de coagulação, manchas roxas, urina escura ou suspeita de síndrome hemorrágica.</p>
+          <p><strong>Observações:</strong> encaminhar para referência/CIATox para avaliação de coagulação e indicação de soro conforme gravidade e protocolo vigente.</p>
+        </div>
+      </div>
+
+      <div class="soro-item">
+        <button class="soro-btn" type="button" onclick="toggleSoro(this)">
+          <div>
+            <div class="soro-title">🕷️ Soro antilatrodético (SALatr)</div>
+            <div class="soro-sub">Acidentes por viúva-negra, quando disponível e indicado</div>
+          </div>
+          <span class="soro-chevron">⌄</span>
+        </button>
+        <div class="soro-content">
+          <p><strong>Indicação geral:</strong> acidentes por <em>Latrodectus</em> (viúva-negra) em quadros moderados ou graves, conforme avaliação clínica, protocolo e disponibilidade.</p>
+          <div class="soro-grid">
+            <div class="soro-mini"><strong>Quadro moderado:</strong><br>1 frasco-ampola</div>
+            <div class="soro-mini"><strong>Quadro grave:</strong><br>2 frascos-ampolas</div>
+          </div>
+          <p><strong>Observações:</strong> avaliar dor intensa, contraturas, sintomas sistêmicos e sinais de gravidade.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ct">📌 Observações gerais sobre administração</div>
     <ul class="il">
-      <li><span class="ico">✅</span><span>Exposição grave em pessoa não vacinada previamente</span></li>
-      <li><span class="ico">✅</span><span>Imunocomprometidos: sempre, mesmo que vacinados</span></li>
-      <li><span class="ico">✅</span><span>Exposição a morcego ou animal silvestre, independente da gravidade</span></li>
-      <li><span class="ico">✅</span><span>Mordedura/arranhão em cabeça, face, pescoço, mãos, pés, genitais</span></li>
-      <li><span class="ico">✅</span><span>Animal suspeito, raivoso, morto ou desaparecido</span></li>
-      <li><span class="ico">❌</span><span>Exposições leves — não indicado</span></li>
-      <li><span class="ico">❌</span><span>Pessoas com PrEP ou PEP completo documentado — não indicado</span></li>
-      <li><span class="ico">❌</span><span>Cão/gato domiciliar saudável e observável — não indicado</span></li>
+      <li><span class="ico">🏥</span><span>A administração deve ocorrer em serviço de saúde com estrutura adequada, conforme risco e protocolo.</span></li>
+      <li><span class="ico">🧾</span><span>A indicação deve considerar avaliação clínica, gravidade, tempo de evolução, disponibilidade do soro e orientação da referência.</span></li>
+      <li><span class="ico">⚠️</span><span>Em caso de reação adversa, seguir manejo clínico adequado e registrar conforme normas vigentes.</span></li>
     </ul>
-  </div>
-  <div class="card">
-    <div class="ct">⚗️ Técnica de administração</div>
-    <ul class="il">
-      <li><span class="ico">1️⃣</span><span><strong>Prioridade:</strong> infiltrar o máximo possível diretamente na(s) ferida(s)</span></li>
-      <li><span class="ico">2️⃣</span><span>Volume restante: aplicar via IM em local diferente da vacina</span></li>
-      <li><span class="ico">🚫</span><span>Nunca misturar soro com vacina na mesma seringa</span></li>
-      <li><span class="ico">🚫</span><span>Nunca aplicar no mesmo sítio anatômico da vacina</span></li>
-      <li><span class="ico">ℹ️</span><span>Pode ser diluído em SF 0,9% para melhor distribuição (sem proporção rígida)</span></li>
-      <li><span class="ico">⏰</span><span>Idealmente no D0; máximo até 7 dias após a 1ª dose da vacina</span></li>
-    </ul>
-  </div>
-  <div class="card">
-    <div class="ct">🔄 Regra do uso único</div>
-    <div class="rbox ra"><div class="rt">⚠️ O soro é utilizado uma única vez na vida</div>
-    <div class="rtx"><strong>Exceção:</strong> Imunocomprometidos recebem soro a cada exposição + sorologia após 14 dias da última dose.<br><br>
-    <strong>Reexposição com vacinação prévia completa:</strong> NÃO usar soro. Indicar 2 doses de vacina (D0 e D3) se ≥ 90 dias do último esquema.</div></div>
   </div>
 </section>
 
@@ -820,6 +1044,51 @@ section.ativa{display:block}
     </ul>
   </div>
   <div class="al"><strong>Fonte:</strong> NT 35/2026 · NT 134/2022 · NT 8/2022 · NT 160/2024 · NT 007/2024/SVES/SEMUS · Guia de Vigilância em Saúde, 6ª edição revisada, 2024 · Portaria 6.161/2024-GAB/SEMUS.</div>
+
+  <div class="card">
+    <div class="ct">⚠️ Acidentes por animais peçonhentos — orientações importantes</div>
+
+    <p><strong>Primeiros cuidados gerais:</strong></p>
+    <ul class="il">
+      <li><span class="ico">💧</span><span>Lavar o local com água e sabão.</span></li>
+      <li><span class="ico">🦶</span><span>Manter o membro afetado em repouso e, quando possível, elevado.</span></li>
+      <li><span class="ico">💍</span><span>Retirar anéis, pulseiras, relógios ou objetos apertados próximos ao local do acidente.</span></li>
+    </ul>
+
+    <p style="margin-top:.75rem"><strong>O que NÃO fazer:</strong></p>
+    <ul class="il">
+      <li><span class="ico">🚫</span><span>Não fazer torniquete ou garrote.</span></li>
+      <li><span class="ico">🚫</span><span>Não cortar, furar, espremer ou sugar o local do acidente.</span></li>
+      <li><span class="ico">🚫</span><span>Não aplicar substâncias no ferimento, como álcool, pó de café, ervas, querosene, pomadas ou produtos caseiros.</span></li>
+      <li><span class="ico">🚫</span><span>Não tentar capturar ou matar o animal, pois isso pode causar novo acidente.</span></li>
+    </ul>
+
+    <p style="margin-top:.75rem"><strong>Identificação do animal:</strong></p>
+    <ul class="il">
+      <li><span class="ico">📸</span><span>Fotografar o animal apenas se for seguro e sem se aproximar.</span></li>
+      <li><span class="ico">🔎</span><span>A identificação pode ajudar na escolha do soro, mas não deve atrasar a procura por atendimento.</span></li>
+    </ul>
+
+    <p style="margin-top:.75rem"><strong>Procurar atendimento imediatamente se houver:</strong></p>
+    <ul class="il">
+      <li><span class="ico">🚨</span><span>Dor intensa ou progressiva.</span></li>
+      <li><span class="ico">🚨</span><span>Inchaço importante ou que aumenta rapidamente.</span></li>
+      <li><span class="ico">🚨</span><span>Vômitos, sudorese, salivação intensa, sonolência, agitação ou mal-estar importante.</span></li>
+      <li><span class="ico">🚨</span><span>Falta de ar, alteração respiratória, desmaio, convulsão ou fraqueza.</span></li>
+      <li><span class="ico">🚨</span><span>Sangramentos, manchas roxas pelo corpo, urina escura ou redução da quantidade de urina.</span></li>
+    </ul>
+
+    <p style="margin-top:.75rem"><strong>Sobre o soro antiveneno:</strong></p>
+    <ul class="il">
+      <li><span class="ico">💉</span><span>Nem todo acidente por animal peçonhento precisa de soro.</span></li>
+      <li><span class="ico">💉</span><span>A indicação depende do tipo de animal, do quadro clínico e da gravidade.</span></li>
+      <li><span class="ico">⚖️</span><span>A dose do soro <strong>não depende do peso da pessoa</strong>; depende da gravidade do acidente e da quantidade de veneno a neutralizar.</span></li>
+      <li><span class="ico">🏥</span><span>Quando indicado, o soro deve ser administrado em unidade de saúde com estrutura adequada.</span></li>
+    </ul>
+
+    <div class="al" style="margin-top:.75rem"><strong>Atenção:</strong> em caso de dúvida, procure uma unidade de saúde ou entre em contato com a vigilância. O aplicativo é ferramenta de apoio e não substitui avaliação clínica presencial.</div>
+  </div>
+
 </section>
 
 
@@ -1085,6 +1354,9 @@ const pePassos={
 let peHist=[],peTrilha=[],pePA=pePassos['inicio'],peRA=null;
 
 function peRender(p){
+  /* header restart peçonhentos */
+  var bhrPe=document.getElementById('bhr');
+  if(bhrPe){ bhrPe.style.display = peTrilha.length>0 ? 'flex' : 'none'; }
   document.getElementById('pe-pn').textContent=p.num||'';
   document.getElementById('pe-pt').textContent=p.pergunta||'';
   const oc=document.getElementById('pe-oc'),rc=document.getElementById('pe-rc');
@@ -1117,7 +1389,11 @@ function peAvancar(proxId,texto){
   peRender(pePA);
 }
 function peReiniciar(){
-  peHist=[]; peTrilha=[]; peRA=null; pePA=pePassos['inicio']; peRender(pePA);
+  peHist=[]; peTrilha=[]; peRA=null; pePA=pePassos['inicio'];
+  /* ocultar header ao reiniciar peçonhentos */
+  var bhrPe=document.getElementById('bhr');
+  if(bhrPe){ bhrPe.style.display='none'; }
+  peRender(pePA);
 }
 function abrirPDFPe(){
   RA=peRA;
@@ -1132,6 +1408,19 @@ function irModulo(id){
     return a.getAttribute('onclick') && a.getAttribute('onclick').indexOf("'" + id + "'") !== -1;
   });
   sec(id, link || null);
+}
+
+
+function reiniciarTudo(){
+  if(typeof reiniciar === 'function'){ reiniciar(); }
+  if(typeof peReiniciar === 'function'){ peReiniciar(); }
+}
+
+
+function toggleSoro(btn){
+  var item = btn.closest('.soro-item');
+  if(!item) return;
+  item.classList.toggle('aberto');
 }
 
 function sec(id,link){
